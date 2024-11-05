@@ -1,0 +1,139 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+} */
+
+
+header{
+    /* position: relative ; */
+    background-color: var(--base-clr);
+    width: 100%;
+    height: 40px;
+    box-shadow: 5px  black;
+    position: fixed;
+    z-index: 3;
+    
+    
+    
+  
+   
+  }
+  header .profil  {
+    position: absolute;
+     right: 4%;
+     top: 3%;
+    font-weight: bold;
+    font-size: 40px;
+    cursor: pointer;
+    color: black;
+    display: flex;
+     
+  }
+   header .profil .setting{
+    position: absolute;
+    top: 3px;
+    right: -6px;
+    gap: -2;
+
+   }
+
+   .container-modale {
+  background-color: var(--base-clr);
+  position: absolute;
+   right: 30px;
+   top: 80px;
+   width: 300px;
+   height:200px ;
+   border-radius: 20px;
+   z-index: 2;
+   box-shadow: var(--box-shadow);
+ 
+}
+
+.container-modale{
+  display: none;
+}
+.showcon-modal{
+  display: block;
+}
+.container-modale .modal-profile {
+  background-color: var(--accent-clr);
+  height: 60px;
+  border-radius: 1em 0.4em 0.4em;
+  
+  
+
+}
+.modal-profile .profile{
+  display: flex;
+  position: absolute;
+  left: 16px;
+  top: 5px;
+ 
+}
+ .modal-profile img{
+  border-radius: 50%;
+  
+
+}
+.modal-profile h3{
+   
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+.modal-profile  .logouot{
+  position: relative;
+   margin-left: 120px;
+   margin-top: 10px;
+}
+
+
+.container-modale li a{
+ box-sizing: border-box;
+ text-decoration: none;
+   color: #201f4b;
+   position: relative;
+   top: 20px;
+   left: 10px;
+}
+
+.container-modale .list-profile li{
+ 
+  position: relative;
+  display: flex;
+  gap: 0 10px
+}
+
+.list-profile svg{
+  position: relative;
+  top: 5px;
+  font: bold;
+  font-size: xx-large;
+}
+
+.list-profile span{
+   position: absolute;
+   top: 7px;
+   left: 40px;
+   color: #b0b3c1;
+}
+.list-profile li a{
+  color: black;
+
+}
+.list-profile  a:hover{
+   background-color: var(--hover-clr);
+   color: white;
+   width: 80%;
+}
+  
