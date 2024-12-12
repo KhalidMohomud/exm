@@ -1,6 +1,4 @@
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,6 +18,9 @@ include ("sidebar.php");
 
 ?>
 
+
+
+
 <?php
 
 
@@ -33,7 +34,7 @@ include ("header.php");
 
 
           
-       <div class="container">
+       <!-- <div class="container">
             <div class="dash">
               <h2>Dashbout</h2>
             </div>
@@ -61,7 +62,7 @@ include ("header.php");
           
            
          
-       </div>
+       </div> -->
      
 
        <div class="containertime">

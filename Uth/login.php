@@ -7,15 +7,15 @@ include('../config/conn.php');
 if (isset($_POST['submit'])) {
     extract($_POST);
     
-    // Corrected SQL query
+
     $sql = "SELECT * FROM users WHERE user_name = '$user_name' AND password = '$password'";
     
     $result = $conn->query($sql);
     
-    // Fetch the result
+
     $data = mysqli_fetch_array($result);
     
-    // Check if data is not empty
+
     if (!empty($data)) {
         $_SESSION['Type'] = $data['Type'];
         $_SESSION['user_name'] = $data['user_name'];

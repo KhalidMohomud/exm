@@ -1,0 +1,92 @@
+.table-container {
+  
+    padding: 20px; 
+    width: 100%;
+    max-width: 900px;
+    position: absolute;
+    left: 300px;
+    top:10rem;
+}
+
+  .table-container  h2 {
+    color: black;
+    position: absolute;
+    font-size: xx-large;
+    top: -80px;
+    left: 30rem;
+}
+#search{
+    height: 40px;
+    width: 200px;
+    /* border: 1px solid black; */
+    position: absolute;
+    border-radius: 10px;
+    top: -40px;
+    font-size: large;
+    text-align: center;
+
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    margin-bottom: 20px;
+    background-color: white;
+    border: 1px solid #3a1111;
+}
+
+th, td {
+    padding: 10px;
+    border-bottom: 1px solid #f7d2d2;
+    
+}
+
+th {
+    background-color:var(--base-clr);
+    color: white;
+    font-size: large;
+}
+td{
+  color: black;
+  background-color: white;
+  font-weight: bolder;
+}
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    gap: 10rem;
+}
+
+.pagination button {
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    
+}
+
+ button #prev{
+    position: absolute;
+    right: 10px;
+
+}
+
+ button #next{
+    position: absolute;
+     left: 0;
+}
+
+
+.pagination button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.pagination button:hover:not(:disabled) {
+    background-color: #0056b3;
+}
