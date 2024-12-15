@@ -86,9 +86,9 @@ session_start();
             </button>
             <ul class="sub-menu">
               <div>
-                <li><a href="s">Exam_Registor</a></li>
-                <li><a href="#"> Exam_Attendecs</a></li>
-                <li><a href="#">Exam_Report</a></li>
+                <li><a href="student_result.php">Exam_result</a></li>
+                <li><a href="resultviews.php"> resultviews</a></li>
+                
             
                 
               </div>

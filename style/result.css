@@ -1,0 +1,146 @@
+
+  
+  
+  
+  .modal-result {
+    height: 32rem;
+    width: 36em;
+    background-color: var(--base-clr);
+    padding: 20px;
+    position: absolute;
+    top: 90px;
+    border: 1px solid #888;
+    border-radius: 15px;   
+    left: 30rem;
+    /* position: fixed; */
+    
+   }
+   
+
+   .modal-result {
+    display: none;
+  }
+  
+  /* .show-result-modal{
+    display: block;
+  } */
+   .modal-result h2{
+     position: relative;
+     text-align: center;
+     font-size: x-large;
+     font-family: Arial, Helvetica, sans-serif;
+     font-weight: bold;
+     color: var(---body-bng);
+     
+   }
+  
+   .modal-result form{
+    display: flex;
+    flex-direction: column;
+    gap: 0.2em;
+    margin-top: 24px;
+    
+    
+   }
+   .modal-result label{
+    margin-bottom: 5px;
+    font-weight: bold;
+  
+   }
+   .modal-result input {
+    border-radius: 10px;
+    height: 30px;
+    border: none;
+   }
+  .modal-result select{
+    border-radius: 10px;
+    height: 34px;
+    border: none;
+  }
+ 
+  
+   
+  
+   .modal-result .button-group{
+    position: absolute;
+    bottom: 0px;
+    right: 2px;
+  
+   }
+  
+   .button-group button{
+    width: 70px;
+    height: 30px;
+    background-color: var(---body-bng);
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    font-size: small;
+    font-weight: bold;
+  
+   }
+   .close{
+    color: var(---body-bng);
+    float: right;
+    font-size: 30px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+
+ 
+     .modal-result h3 #selectedClassName{
+     position: relative;
+     text-align: center;
+     font-size: x-large;
+     font-family: Arial, Helvetica, sans-serif;
+     font-weight: bold;
+     color: var(---body-bng);
+     
+   }
+
+   .modal-result h3 #selectedmester{
+    position: relative;
+    text-align: center;
+    font-size: x-large;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: var(---body-bng);
+    
+  }
+  
+   .container-results .sections #class_id{
+    font-size: x-large;
+    background-color:var(--base-clr);
+    height: 50px;
+    width: 200px;
+    position: absolute;
+    left: 300px;
+    top: 200px;
+    border-radius: 10px;
+    border: none;
+    color: white;
+
+   }
+
+   .container-results .sections #semester_id{
+    font-size: x-large;
+    background-color : var(--base-clr);
+    height: 50px;
+    width: 200px;
+    position: absolute;
+    left: 600px;
+    top: 200px;
+    border-radius: 10px;
+    border: none;
+    color: white;
+
+   }
