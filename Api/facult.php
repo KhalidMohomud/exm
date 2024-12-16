@@ -104,15 +104,19 @@ function update_facult($conn){
     extract($_POST);
 
     
-
+    if(isset($faculty_id) && isset($name) && isset($department_id)) {
     $query = "UPDATE faculties SET name ='$name', department_id = '$department_id' where  faculty_id = '$faculty_id'";
     $result = $conn->query($query);
 
     if($result){
             $data = array("status" => true, "data" => "Updated Successfully");
-    }else{
+    }
+else{
         $data = array("status" => false, "data" => $conn->error);
     }
+}else {
+    $data = array("status" => false, "data" => "Required fields are missing.");
+}
 
     echo json_encode($data);
 
@@ -130,7 +134,7 @@ function delete_facult($conn){
     extract($_POST);
       // $studentId=$_POST['StudentId'];
  
-   $query = "DELETE FROM `faculties` WHERE  faculty_id = '$faculty_id'";
+   $query = " DELETE FROM `faculties` where  faculty_id = '$faculty_id'";
    $reselt = $conn->query($query);
    if($reselt){
     echo json_encode(["status"=>"success", "message"=>"success delete"]);

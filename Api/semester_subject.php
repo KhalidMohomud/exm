@@ -7,11 +7,27 @@ include "../config/conn.php";
 
 
 
-function department_read($conn){
+function semester_subject_read($conn){
 
     $data = array();
     $array_data = array();
-    $query = "SELECT * FROM `departments` ";
+    $query = "SELECT 
+    s_sub.subject_semester_id, 
+    s.semester_name, 
+    su.subject_name 
+FROM 
+    `semester_subject` s_sub 
+RIGHT JOIN 
+    semester s ON s.semester_id = s_sub.semester_id
+RIGHT JOIN  
+    subjects su ON s_sub.subject_id = su.subject_id
+WHERE 
+    s_sub.subject_semester_id IS NOT NULL
+    ORDER BY 
+    s.semester_name ASC, 
+      s_sub.subject_semester_id ASC,
+    su.subject_name ASC;
+";
     $result = $conn->query($query);
 
     if($result){
@@ -32,12 +48,12 @@ function department_read($conn){
 
 
 
-function department_fetch($conn){
+function semester_subject_fetch($conn){
 
     extract($_POST);
     $data = array();
     $array_data = array();
-    $query = "SELECT * FROM `departments` where department_id = '$department_id'";
+    $query = "SELECT * FROM `semester_subject` where subject_semester_id = '$subject_semester_id'";
     $result = $conn->query($query);
 
     if($result){
@@ -55,13 +71,14 @@ function department_fetch($conn){
 }
 
 
+// register_semester_subject($conn);
 
-
-function register_department($conn){
+function register_semester_subject($conn){
 
     extract($_POST);
     $data = array();
-    $query = "INSERT INTO `departments`( department_name) VALUES ('$department_name')";
+
+    $query = "INSERT INTO `semester_subject` ( `semester_id`, `subject_id`) VALUES ( '$semester_id', '$subject_id')";
     $result = $conn->query($query);
     if($result){
 
@@ -76,13 +93,10 @@ function register_department($conn){
 }
 
 
-function Update_department($conn){
-
+function Update_semester_subject($conn){
     extract($_POST);
-
     $data = array();
- 
-    $query = "UPDATE departments SET department_name ='$department_name' WHERE department_id = '$department_id'";
+    $query = "UPDATE semester_subject SET  semester_id = '$semester_id' ,subject_id = '$subject_id' where  subject_semester_id = '$subject_semester_id'";
   
 
     $result = $conn->query($query);
@@ -102,12 +116,12 @@ function Update_department($conn){
 
 
 
-function delete_departments_info($conn){
+function delete_semester_subject_info($conn){
   
     extract($_POST);
-
+    
  
-   $query = "DELETE FROM `departments` WHERE  department_id = '$department_id'";
+   $query = "DELETE FROM `semester_subject` where subject_semester_id = '$subject_semester_id'";
    $reselt = $conn->query($query);
    if($reselt){
     echo json_encode(["status"=>"success", "message"=>"success delete"]);

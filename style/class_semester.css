@@ -1,18 +1,18 @@
 
 
 
-#class_h2{
+#class_semester {
     position: absolute;
     left: 300px;
    
     color: var(--base-clr);
     font-weight: bold;
-    top: 140px;
+    top: 150px;
     font-size: xx-large;
 
 }
  
-.Addbtn-class {
+.Addbtn-class_semester {
 
     position: absolute;
       color: rgb(250, 247, 247);
@@ -59,7 +59,7 @@
     font-weight: bolder;
   }
   
-  .modal-class {
+  .modal-class_semester {
     height: 15rem;
     width: 22em;
     background-color: var(--base-clr);
@@ -73,14 +73,14 @@
     position: fixed;
    }
    
-   .modal-class {
+   .modal-class_semester {
     display: none;
   }
   
   /* .show-Links-modal{
     display: block;
   } */
-   .modal-class h2{
+   .modal-class_semester h2{
      position: relative;
      text-align: center;
      font-size: x-large;
@@ -90,7 +90,7 @@
      
    }
   
-   .modal-class form{
+   .modal-class_semester form{
     display: flex;
     flex-direction: column;
     gap: 0.2em;
@@ -98,16 +98,16 @@
     
     
    }
-   .modal-class label{
+   .modal-class_semester label{
     margin-bottom: 5px;
     font-weight: bold;
   
    }
-   .modal-class input {
+   .modal-class_semester input {
     border-radius: 10px;
     height: 30px;
    }
-  .modal-class select{
+  .modal-class_semester select{
     border-radius: 10px;
     height: 30px;
   }
@@ -115,7 +115,7 @@
   
    
   
-   .modal-class .button-group{
+   .modal-class_semester .button-group{
     position: absolute;
     bottom: 0px;
     right: 2px;

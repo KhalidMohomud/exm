@@ -1,18 +1,18 @@
 
 
 
-#class_h2{
+#semester_subject {
     position: absolute;
     left: 300px;
    
     color: var(--base-clr);
     font-weight: bold;
-    top: 140px;
+    top: 150px;
     font-size: xx-large;
 
 }
  
-.Addbtn-class {
+.Addbtn-semester_subject {
 
     position: absolute;
       color: rgb(250, 247, 247);
@@ -59,7 +59,7 @@
     font-weight: bolder;
   }
   
-  .modal-class {
+  .modal-semester_subject {
     height: 15rem;
     width: 22em;
     background-color: var(--base-clr);
@@ -73,14 +73,14 @@
     position: fixed;
    }
    
-   .modal-class {
+   .modal-semester_subject {
     display: none;
   }
   
   /* .show-Links-modal{
     display: block;
   } */
-   .modal-class h2{
+   .modal-semester_subject h2{
      position: relative;
      text-align: center;
      font-size: x-large;
@@ -90,7 +90,7 @@
      
    }
   
-   .modal-class form{
+   .modal-semester_subject form{
     display: flex;
     flex-direction: column;
     gap: 0.2em;
@@ -98,16 +98,16 @@
     
     
    }
-   .modal-class label{
+   .modal-semester_subject label{
     margin-bottom: 5px;
     font-weight: bold;
   
    }
-   .modal-class input {
+   .modal-semester_subject input {
     border-radius: 10px;
     height: 30px;
    }
-  .modal-class select{
+  .modal-semester_subject select{
     border-radius: 10px;
     height: 30px;
   }
@@ -115,7 +115,7 @@
   
    
   
-   .modal-class .button-group{
+   .modal-semester_subject .button-group{
     position: absolute;
     bottom: 0px;
     right: 2px;

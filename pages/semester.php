@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard</title>
   <link rel="stylesheet" href="../style/stype.css">
-  <link rel="stylesheet" href="../style/class.css">
+  <link rel="stylesheet" href="../style/semester.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <body class="">
@@ -73,22 +73,21 @@ include ("header.php");
   <main>
 
 
-    <div class="container-classs">
+    <div class="container-semesters">
 
          
-        <button class="Addbtn-class" id="openModalBtn"><span class="material-symbols-outlined">
+        <button class="Addbtn-semester" id="openModalBtn"><span class="material-symbols-outlined">
             add
             </span></button>
            
-            <h2 id="class_h2"> Section class</h2>
+            <h2 id="dep_h2">semester</h2>
             <div class="container ">
-             <table id="class_Table" >
+             <table id="semester_Table" >
+              
                <thead >
                   <tr>
                     <th>#</th>
-                      <th>class Name</th>      
-                      <th>department id</th>
-                      <th>Date</th>
+                      <th>Name</th>       
                       <th>Action</th>
                   </tr>
                </thead>
@@ -105,24 +104,19 @@ include ("header.php");
 
     
                
-        <div class="modal-class" id="modal-class">
+        <div class="modal-semester" id="modal-semester">
             
         
         
       
                 <span class="close" id="Xbtn">&times;</span>
-                <h2>class Froms</h2>
+                <h2>semester Froms</h2>
                
-                <form   id="form_classe" meth >
+                <form   id="form_semester" >
                 <input type="hidden" name="updateid" id="updateid">
-            <label for="class" class="form-label">Name</label>
-                 <input type="text" class="form-control" id="class_name" name="class_name"  >
-                 <label for="department_id" class="form-label">department_name</label>
-
-           <select class="form-select" id="course_id" name="course_id" required >
-                <option value="" disabled selected>Select Department</option>
-  
-                    </select>
+            <label for="semester" class="form-label">Name</label>
+                 <input type="text" class="form-control" id="semester_name" name="semester_name"  aria-describedby="emailHelp" placeholder="Enter name">
+    
                        
                     <div class="button-group">
                         <button type="button"  id="closebtn"  >close</button>
@@ -142,5 +136,5 @@ include ("header.php");
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" 
 integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script type="text/javascript" src="../node_modules/class.js" defer></script>
+<script type="text/javascript" src="../node_modules/semester.js" defer></script>
 </html>

@@ -5,34 +5,34 @@ include "../Config/conn.php";
 
 
 // ...........page ka result waaye
-function studensread($conn){
+// function studensread($conn){
 
-    $data = array();
-    $array_data = array();
-    $query = "SELECT students.student_id, students.first_name, students.last_name, students.email, 
-        students.contact_number, departments.department_name, class.class_name, students.date_of_birth, students.enrollment_year
-        FROM students
-        LEFT JOIN departments ON students.department_id = departments.department_id
-        LEFT JOIN class  ON students.class_id = class.class_id  ";
-    $result = $conn->query($query);
+//     $data = array();
+//     $array_data = array();
+//     $query = "SELECT students.student_id, students.first_name, students.last_name, students.email, 
+//         students.contact_number, departments.department_name, class.class_name, students.date_of_birth, students.enrollment_year
+//         FROM students
+//         LEFT JOIN departments ON students.department_id = departments.department_id
+//         LEFT JOIN class  ON students.class_id = class.class_id  ";
+//     $result = $conn->query($query);
 
     
 
-    if($result){
+//     if($result){
 
-        while($row = $result->fetch_assoc()){
-            $array_data [] = $row;
-        }
+//         while($row = $result->fetch_assoc()){
+//             $array_data [] = $row;
+//         }
 
-        $data = array("status" => true, "data" => $array_data);
+//         $data = array("status" => true, "data" => $array_data);
 
-    }else{
+//     }else{
 
-        $data = array("status" => false, "data" => $conn->error);
-    }
+//         $data = array("status" => false, "data" => $conn->error);
+//     }
 
-    echo json_encode($data);
-}
+//     echo json_encode($data);
+// }
 
 
 
@@ -60,8 +60,8 @@ function student_name($conn){
 function semester_name($conn){
     
     extract($_POST);
-$sql = "  SELECT * FROM `class_semester`  cs LEFT JOIN  semester s ON cs.semester_id = s.semester_id
- LEFT JOIN class c ON cs.class_id = c.class_id WHERE c.class_id  = '$class_id'";
+   $sql = "  SELECT * FROM `class_semester`  cs LEFT JOIN  semester s ON cs.semester_id = s.semester_id
+     LEFT JOIN class c ON cs.class_id = c.class_id WHERE c.class_id  = '$class_id'";
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) > 0) {

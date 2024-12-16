@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="../style/stype.css">
     <link rel="stylesheet" href="../style/stude_view.css">
+    
 
 </head>
 <body class="">
@@ -40,14 +41,15 @@ include ("header.php");
                     <th>last_name</th>
                     <th>email</th>
                     <th>contact_number</th>
-                    <th>department_name</th>
+                    <!-- <th>department_name</th>
                     <th>class_name</th>
                     <th>date_of_birth</th>
-                    <th>enrollment_year</th>
+                    <th>enrollment_year</th> -->
+                    <th>views</th>
                     <th>Actions</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="tbody">
                
             </tbody>
         </table>
@@ -57,6 +59,11 @@ include ("header.php");
         </div> -->
     </div>
 
+    <div class="on-modal">
+         <div class="modal-box">
+                           
+             </div>
+            </div>
 
 
 </body>

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard</title>
   <link rel="stylesheet" href="../style/stype.css">
-  <link rel="stylesheet" href="../style/class.css">
+  <link rel="stylesheet" href="../style/semester_subject.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <body class="">
@@ -73,22 +73,22 @@ include ("header.php");
   <main>
 
 
-    <div class="container-classs">
+    <div class="container-semester_subject">
 
          
-        <button class="Addbtn-class" id="openModalBtn"><span class="material-symbols-outlined">
+        <button class="Addbtn-semester_subject" id="openModalBtn"><span class="material-symbols-outlined">
             add
             </span></button>
            
-            <h2 id="class_h2"> Section class</h2>
+            <h2 id="semester_subject"> semester subject</h2>
             <div class="container ">
-             <table id="class_Table" >
+             <table id="semester_subject_Table" >
+              
                <thead >
                   <tr>
                     <th>#</th>
-                      <th>class Name</th>      
-                      <th>department id</th>
-                      <th>Date</th>
+                      <th>  semester Name</th>
+                      <th>  subject Name</th>
                       <th>Action</th>
                   </tr>
                </thead>
@@ -105,24 +105,39 @@ include ("header.php");
 
     
                
-        <div class="modal-class" id="modal-class">
+        <div class="modal-semester_subject" id="modal-semester_subject">
             
         
         
       
                 <span class="close" id="Xbtn">&times;</span>
-                <h2>class Froms</h2>
+                <h2>semester_subject From</h2>
                
-                <form   id="form_classe" meth >
-                <input type="hidden" name="updateid" id="updateid">
-            <label for="class" class="form-label">Name</label>
-                 <input type="text" class="form-control" id="class_name" name="class_name"  >
-                 <label for="department_id" class="form-label">department_name</label>
+                <form  method="post" >
+                <input type="hidden" name="updateid" id="update_id">
 
-           <select class="form-select" id="course_id" name="course_id" required >
-                <option value="" disabled selected>Select Department</option>
+                
+                <label for="subject_id" class="form-label">subject_name</label>
+
+<select class="form-select" id="subject_id" name="subject_id" required>
+    <option value="" disabled selected>Select class</option>
+
+
   
-                    </select>
+
+
+  
+</select>
+           
+     <label for="semester_id" class="form-label">semester_name</label>
+
+<select class="form-select" id="semester_id" name="semester_id" required>
+    <option value="" disabled selected>Select semester</option>
+  
+
+ 
+
+</select>
                        
                     <div class="button-group">
                         <button type="button"  id="closebtn"  >close</button>
@@ -142,5 +157,5 @@ include ("header.php");
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" 
 integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script type="text/javascript" src="../node_modules/class.js" defer></script>
+<script type="text/javascript" src="../node_modules/semester_subject.js" defer></script>
 </html>

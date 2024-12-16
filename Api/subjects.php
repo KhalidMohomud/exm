@@ -7,11 +7,11 @@ include "../config/conn.php";
 
 
 
-function department_read($conn){
+function subject_read($conn){
 
     $data = array();
     $array_data = array();
-    $query = "SELECT * FROM `departments` ";
+    $query = "SELECT * FROM `subjects` ";
     $result = $conn->query($query);
 
     if($result){
@@ -32,12 +32,12 @@ function department_read($conn){
 
 
 
-function department_fetch($conn){
+function subject_fetch($conn){
 
     extract($_POST);
     $data = array();
     $array_data = array();
-    $query = "SELECT * FROM `departments` where department_id = '$department_id'";
+    $query = "SELECT * FROM `subjects` where subject_id = '$subject_id'";
     $result = $conn->query($query);
 
     if($result){
@@ -57,11 +57,11 @@ function department_fetch($conn){
 
 
 
-function register_department($conn){
+function register_subjects($conn){
 
     extract($_POST);
     $data = array();
-    $query = "INSERT INTO `departments`( department_name) VALUES ('$department_name')";
+    $query = "INSERT INTO `subjects`( subject_name) VALUES ('$subjects_name')";
     $result = $conn->query($query);
     if($result){
 
@@ -76,13 +76,13 @@ function register_department($conn){
 }
 
 
-function Update_department($conn){
+function Update_subject($conn){
 
     extract($_POST);
 
     $data = array();
  
-    $query = "UPDATE departments SET department_name ='$department_name' WHERE department_id = '$department_id'";
+    $query = "UPDATE subjects SET subject_name ='$subjects_name' WHERE subject_id = '$subject_id'";
   
 
     $result = $conn->query($query);
@@ -102,12 +102,12 @@ function Update_department($conn){
 
 
 
-function delete_departments_info($conn){
+function delete_subjects_info($conn){
   
     extract($_POST);
-
+    //   $subject_id=$_POST['subject_id'];
  
-   $query = "DELETE FROM `departments` WHERE  department_id = '$department_id'";
+   $query = "DELETE FROM `subjects` WHERE  subject_id = '$subject_id'";
    $reselt = $conn->query($query);
    if($reselt){
     echo json_encode(["status"=>"success", "message"=>"success delete"]);
@@ -125,8 +125,6 @@ if(isset($_POST['action'])){
     $action = $_POST['action'];
 
          $action($conn); 
-  
-   
 }else{
     echo json_encode(["status"=>"error","message"=>"action is requers"]);
 }

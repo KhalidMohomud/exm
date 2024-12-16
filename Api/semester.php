@@ -7,11 +7,11 @@ include "../config/conn.php";
 
 
 
-function subject_read($conn){
+function semester_read($conn){
 
     $data = array();
     $array_data = array();
-    $query = "SELECT * FROM `subjects` ";
+    $query = "SELECT * FROM `semester` ";
     $result = $conn->query($query);
 
     if($result){
@@ -32,12 +32,12 @@ function subject_read($conn){
 
 
 
-function subject_fetch($conn){
+function semester_fetch($conn){
 
     extract($_POST);
     $data = array();
     $array_data = array();
-    $query = "SELECT * FROM `subjects` where subject_id = '$subject_id'";
+    $query = "SELECT * FROM `semester` where semester_id = '$semester_id'";
     $result = $conn->query($query);
 
     if($result){
@@ -57,11 +57,11 @@ function subject_fetch($conn){
 
 
 
-function register_subject($conn){
+function register_semester($conn){
 
     extract($_POST);
     $data = array();
-    $query = "INSERT INTO `subjects`( subject_name) VALUES ('$subject_name')";
+    $query = "INSERT INTO `semester`( semester_name) VALUES ('$semester_name')";
     $result = $conn->query($query);
     if($result){
 
@@ -76,13 +76,13 @@ function register_subject($conn){
 }
 
 
-function Update_subject($conn){
+function Update_semester($conn){
 
     extract($_POST);
 
     $data = array();
  
-    $query = "UPDATE subjects SET subject_name ='$subject_name' WHERE subject_id = '$subject_id'";
+    $query = "UPDATE semester SET semester_name ='$semester_name' WHERE semester_id = '$semester_id'";
   
 
     $result = $conn->query($query);
@@ -102,12 +102,12 @@ function Update_subject($conn){
 
 
 
-function delete_subjects_info($conn){
+function delete_semesters_info($conn){
   
     extract($_POST);
-    //   $subject_id=$_POST['subject_id'];
+    
  
-   $query = "DELETE FROM `subjects` WHERE  subject_id = '$subject_id'";
+   $query = "DELETE  FROM `semester` WHERE  semester_id = '$semester_id'";
    $reselt = $conn->query($query);
    if($reselt){
     echo json_encode(["status"=>"success", "message"=>"success delete"]);

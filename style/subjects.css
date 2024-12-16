@@ -1,7 +1,4 @@
-
-
-
-#class_h2{
+#subject_h2{
     position: absolute;
     left: 300px;
    
@@ -12,7 +9,8 @@
 
 }
  
-.Addbtn-class {
+
+.Addbtn-subjects {
 
     position: absolute;
       color: rgb(250, 247, 247);
@@ -59,28 +57,30 @@
     font-weight: bolder;
   }
   
-  .modal-class {
-    height: 15rem;
+  .modal-subjects {
+    height: 10rem;
     width: 22em;
     background-color: var(--base-clr);
     padding: 20px;
     position: absolute;
     top: 100px;
     border: 1px solid #888;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    border-radius: 50px 10px 20px;
+    box-shadow: 10px rgba(0,0,0,0.2);
+
     left: 30rem;
     position: fixed;
+    
    }
    
-   .modal-class {
+  
+   .modal-subjects {
     display: none;
   }
   
-  /* .show-Links-modal{
+  /* .show-subjectss-modal{
     display: block;
   } */
-   .modal-class h2{
+   .modal-subjects h2{
      position: relative;
      text-align: center;
      font-size: x-large;
@@ -90,7 +90,7 @@
      
    }
   
-   .modal-class form{
+   .modal-subjects form{
     display: flex;
     flex-direction: column;
     gap: 0.2em;
@@ -98,24 +98,25 @@
     
     
    }
-   .modal-class label{
+   .modal-subjects label{
     margin-bottom: 5px;
     font-weight: bold;
   
    }
-   .modal-class input {
+   .modal-subjects input {
     border-radius: 10px;
     height: 30px;
    }
-  .modal-class select{
+  .modal-subjects select{
     border-radius: 10px;
-    height: 30px;
+    height: 25px;
+
   }
  
   
    
   
-   .modal-class .button-group{
+   .modal-subjects .button-group{
     position: absolute;
     bottom: 0px;
     right: 2px;
