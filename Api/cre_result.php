@@ -7,52 +7,55 @@ include "../config/conn.php";
 
 
 
-// function result_read($conn){
+function result_read($conn){
+  extract($_POST);
+    $data = array();
+    $array_data = array();
+    $query = " SELECT ex.result_id, s.first_name, sub.subject_name, midterm ,coursework ,final,reexam, ex.total_marks, ex.grade FROM `exam_results` ex LEFT JOIN students s ON ex.student_id = s.student_id
+LEFT JOIN subjects sub ON ex.subject_id = sub.subject_id   WHERE ex.result_id is not null  and LOWER(s.first_name) = LOWER('$first_name')
+ORDER BY s.first_name ASC ";
+    $result = $conn->query($query);
 
-//     $data = array();
-//     $array_data = array();
-//     $query = "SELECT * FROM `results` ";
-//     $result = $conn->query($query);
+    if($result){
 
-//     if($result){
+        while($row = $result->fetch_assoc()){
+            $array_data [] = $row;
+        }
 
-//         while($row = $result->fetch_assoc()){
-//             $array_data [] = $row;
-//         }
+        $data = array("status" => true, "data" => $array_data);
 
-//         $data = array("status" => true, "data" => $array_data);
+    }else{
 
-//     }else{
+        $data = array("status" => false, "data" => $conn->error);
+    }
 
-//         $data = array("status" => false, "data" => $conn->error);
-//     }
-
-//     echo json_encode($data);
-// }
+    echo json_encode($data);
+}
 
 
 
-// function result_fetch($conn){
+function result_fetch($conn){
 
-//     extract($_POST);
-//     $data = array();
-//     $array_data = array();
-//     $query = "SELECT * FROM `results` where result_id = '$result_id'";
-//     $result = $conn->query($query);
+    extract($_POST);
+    $data = array();
+    $array_data = array();
+    $query = " SELECT* FROM `exam_results` ex LEFT JOIN students s ON ex.student_id = s.student_id
+         LEFT JOIN subjects sub ON ex.subject_id = sub.subject_id  where ex.result_id = '$result_id'";
+    $result = $conn->query($query);
 
-//     if($result){
+    if($result){
 
-//        $row = $result->fetch_assoc();
+       $row = $result->fetch_assoc();
        
-//         $data = array("status" => true, "data" =>$row);
+        $data = array("status" => true, "data" =>$row);
 
-//     }else{
+    }else{
 
-//         $data = array("status" => false, "data" => $conn->error);
-//     }
+        $data = array("status" => false, "data" => $conn->error);
+    }
 
-//     echo json_encode($data);
-// }
+    echo json_encode($data);
+}
 
 
 
@@ -83,7 +86,8 @@ function Update_result($conn){
 
     $data = array();
  
-    $query = "UPDATE results SET result_name ='$result_name' WHERE result_id = '$result_id'";
+    $query = " UPDATE `exam_results` SET `student_id`='$student_id',
+    `midterm`='$midterm',`coursework`='$coursework',`final`='$final',`reexam`='$reexam',`subject_id`='$subject_id'  WHERE result_id = '$result_id'";
   
 
     $result = $conn->query($query);
@@ -103,12 +107,12 @@ function Update_result($conn){
 
 
 
-function delete_results_info($conn){
+function delete_results($conn){
   
     extract($_POST);
-    //   $result_id=$_POST['result_id'];
+
  
-   $query = "DELETE FROM `results` WHERE  result_id = '$result_id'";
+   $query = " DELETE FROM exam_results  where result_id  = '$result_id'";
    $reselt = $conn->query($query);
    if($reselt){
     echo json_encode(["status"=>"success", "message"=>"success delete"]);
@@ -133,6 +137,18 @@ if(isset($_POST['action'])){
         case 'register_result':
             register_result($conn);
             break;
+            case 'result_read':
+                result_read($conn);
+                break;
+            case ' result_fetch':
+            result_fetch($conn);
+             break;
+             case 'Update_result':
+              Update_result($conn);
+                break;
+                case 'delete_results':
+                    delete_results($conn);
+                    break;   
 }
    
 }else{

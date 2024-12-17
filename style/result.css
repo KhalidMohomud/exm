@@ -1,4 +1,42 @@
 
+  
+  table {
+    position: absolute;
+      width: 75%;
+      left: 17.4rem;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+      background-color: white;
+      border: 1px solid #3a1111;
+      text-align: center;
+      border-radius: 10px;
+      top: 230px;
+  }
+  th, td {
+      padding: 10px;
+      border-bottom: 1px solid #f7d2d2;
+      
+  }
+  
+  th {
+      background-color:var(--base-clr);
+      color: white;
+      font-size: large;
+  }
+  td{
+    color: var(--base-clr);
+    background-color: white;
+    font-weight: bolder;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
   .modal-result {
     height: 32rem;
     width: 36em;
@@ -121,7 +159,7 @@
     width: 200px;
     position: absolute;
     left: 300px;
-    top: 200px;
+    top: 150px;
     border-radius: 10px;
     border: none;
     cursor: pointer;
@@ -140,7 +178,7 @@
     width: 200px;
     position: absolute;
     left: 600px;
-    top: 200px;
+    top: 150px;
     border-radius: 10px;
     border: none;
     cursor: pointer;
@@ -151,7 +189,23 @@
     color: white;
 
    }
-
+   .container-results .sections #studentSelect{
+    font-size: x-large;
+    background-color : var(--base-clr);
+    height: 50px;
+    width: 200px;
+    position: absolute;
+    left: 900px;
+    top: 150px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    appearance: none; 
+    -moz-appearance: none; 
+    -webkit-appearance: none;
+    transition: border-color 0.3s ease;
+    color: white;
+   }
 
 
 
@@ -182,146 +236,3 @@
   color: #0056b3;  
 }
 
-/* ..........view .... */
-
-.on-modal{
-
-  height: 100vh;
-  width: 100%;
-  background-color: rgba(83, 80, 80, 0.50);
-  position: fixed;
- 
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  visibility: hidden;
-  opacity: 1; 
-  top: 0;
-  transition: 0.6s;
-}
-.on-modal .modal-box{
-  width: 50vh;
-  height: 40vh;
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow:  rgba(83, 80, 80, 0.50);
-}
-.on-modal .modal-box .modal-body ul{
-  display: flex;
-  width: 100%;
-  height: 100%;
-  justify-content: space-between;
-  font-size: 18px;
-  margin-top: 40px;
-}
-
-.on-modal .modal-box .modal-body ul .date li{
-list-style: none;
-}
-
-.on-modal .modal-box .modal-header .modal-btn {
-  /* display: flex;
-  justify-content: space-between; */
- 
-  position: relative;
-  right: 0;
-}
-
-.on-modal .modal-box .modal-header .modal-btn button{
-  border: none;
-}
-
-.modal-btn button{
-  position: absolute;
-  right: -230px;
-  font-size: x-large;
-  top: -19px;
-  font-weight: bold;
-  
-
-}
-
-
-
-
-
-
-.container{
-  margin-top: 100px;
-}
-
-#panal{
-  height: 60px;
-  background-color: rgb(172, 170, 253);
-  box-shadow:  2px 3px -2px black;
-
-}
-#panal  li{
-  display: flex;
-  position: relative;
-
-  margin-left: 100px;
-  gap: 3rem;
-  
-}
- #panal li button{
-  border: none;
-  width: 120px;
- height: 60px;
- background-color: black;
- color: white;
- font-family: Arial, Helvetica, sans-serif;
- font-weight: bold;
- border-radius: 10px;
-
-}
-
-
-
-.modal-body-payment body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  margin: 0;
-  padding: 20px;
-}
-
-.modal-body-payment .container {
-  max-width: 600px;
-  margin: auto;
-  background: white;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.modal-body-payment h1 {
-  text-align: center;
-}
-
-.modal-body-payment label {
-  display: block;
-  margin: 10px 0 5px;
-}
-
-.modal-body-payment input {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-}
-
-.modal-body-payment button {
-  width: 100%;
-  padding: 10px;
-  background: #28a745;
-  color: white;
-  border: none;
-  border-radius: 5px;
-}
-
-.modal-body-payment #response {
-  margin-top: 20px;
-  text-align: center;
-}

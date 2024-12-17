@@ -124,7 +124,7 @@ if (mysqli_num_rows($sql) > 0) {
 
      
 
-
+         
 <!-- #include('../config/conn.php');
 
 
@@ -147,20 +147,48 @@ if (mysqli_num_rows($sql) > 0) {
 // ?> -->
         </select>
 
+        <select id="studentSelect" name="studentSelect" required>
+        <option value="" disabled selected>Select student</option>
+      <?php
+        include('../config/conn.php');
 
+
+$sql = mysqli_query($conn, "SELECT * FROM students");
+
+
+if (mysqli_num_rows($sql) > 0) {
+
+    while ($row = mysqli_fetch_assoc($sql)) {
+        echo "<option value='{$row['student_id']}'>{$row['first_name']} </option>";
+        $first_name  = $row['first_name'];
+      
+        
+        
+    }
+  
+} else {
+    echo "<option value=''>No students found</option>";
+}
+?>
+        </select>
         
         </div> 
 
-        <!-- <div class="container ">
+        <div class="container ">
              <table id="result_Table" >
               
                <thead >
                   <tr>
-                    <th>#</th>
-                      <th>  result Name</th>
-                     
-                      <th>  department Name</th>
-                      <th>Action</th>
+                  <th>Result ID</th>
+                <th>Student Name</th>
+                <th>subject</th>
+                <th>Midterm</th>
+                <th>Coursework</th>
+                <th>Final</th>
+                <th>Reexam</th>
+                <th>Total Marks</th>
+                <th>Grade</th>
+                <th>Actions</th>
                   </tr>
                </thead>
                <tbody>
@@ -170,7 +198,7 @@ if (mysqli_num_rows($sql) > 0) {
        
                </tbody>
          </table>
-       </div> -->
+       </div>
     </div>
 
 
