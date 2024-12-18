@@ -1,0 +1,366 @@
+/* 
+  #student_Table table{
+    position: absolute;
+      width: 75%;
+      left: 17.4rem;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+      background-color: white;
+      border: 1px solid #3a1111;
+      text-align: center;
+      border-radius: 10px;
+      top: 200px;
+  } */
+  
+
+  #student_Table {
+
+    position: absolute;
+    width: 50%;
+    left: 17.4rem;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background-color: white;
+    border: 1px solid #3a1111;
+    text-align: center;
+    border-radius: 10px;
+    top: 230px;
+
+    th, td {
+      padding: 10px;
+      border-bottom: 1px solid #f7d2d2;
+      
+  }
+  
+  th {
+      background-color:var(--base-clr);
+      color: white;
+      font-size: large;
+  }
+  td{
+    color: var(--base-clr);
+    background-color: white;
+    font-weight: bolder;
+
+    
+  }
+}
+  
+
+
+
+
+#resultviews_Table {
+
+  position: absolute;
+  width: 75%;
+  left: 17.4rem;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  background-color: white;
+  border: 1px solid #3a1111;
+  text-align: center;
+  border-radius: 10px;
+  top: 350px;
+ 
+
+  th, td {
+    padding: 10px;
+    border-bottom: 1px solid #f7d2d2;
+    
+}
+
+th {
+    background-color:var(--base-clr);
+    color: white;
+    font-size: large;
+}
+td{
+  color: var(--base-clr);
+  background-color: white;
+  font-weight: bolder;
+
+  
+}
+}
+
+
+
+  #student_Table table{
+
+  }
+   /* table {
+    position: absolute;
+      width: 75%;
+      left: 17.4rem;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+      background-color: white;
+      border: 1px solid #3a1111;
+      text-align: center;
+      border-radius: 10px;
+      top: 230px;
+  }
+  th, td {
+      padding: 10px;
+      border-bottom: 1px solid #f7d2d2;
+      
+  }
+  
+  th {
+      background-color:var(--base-clr);
+      color: white;
+      font-size: large;
+  }
+  td{
+    color: var(--base-clr);
+    background-color: white;
+    font-weight: bolder;
+  } */
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  .modal-result {
+    height: 32rem;
+    width: 36em;
+    background-color: var(--base-clr);
+    padding: 20px;
+    position: absolute;
+    top: 90px;
+    border: 1px solid #888;
+    border-radius: 15px;   
+    left: 30rem;
+    /* position: fixed; */
+    
+   }
+   
+
+   .modal-result {
+    display: none;
+  }
+  
+  /* .show-result-modal{
+    display: block;
+  } */
+   .modal-result h2{
+     position: relative;
+     text-align: center;
+     font-size: x-large;
+     font-family: Arial, Helvetica, sans-serif;
+     font-weight: bold;
+     color: var(---body-bng);
+     
+   }
+  
+   .modal-result form{
+    display: flex;
+    flex-direction: column;
+    gap: 0.2em;
+    margin-top: 24px;
+    
+    
+   }
+   .modal-result label{
+    margin-bottom: 5px;
+    font-weight: bold;
+  
+   }
+   .modal-result input {
+    border-radius: 10px;
+    height: 30px;
+    border: none;
+   }
+  .modal-result select{
+    border-radius: 10px;
+    height: 34px;
+    border: none;
+  }
+ 
+  
+   
+  
+   .modal-result .button-group{
+    position: absolute;
+    bottom: 0px;
+    right: 2px;
+  
+   }
+  
+   .button-group button{
+    width: 70px;
+    height: 30px;
+    background-color: var(---body-bng);
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    font-size: small;
+    font-weight: bold;
+  
+   }
+   .close{
+    color: var(---body-bng);
+    float: right;
+    font-size: 30px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+
+ 
+     /* .modal-result h3 #selectedClassName{
+     position: relative;
+     text-align: center;
+     font-size: x-large;
+     font-family: Arial, Helvetica, sans-serif;
+     font-weight: bold;
+     color: var(---body-bng);
+     
+   }
+
+   .modal-result h3 #selectedmester{
+    position: relative;
+    text-align: center;
+    font-size: x-large;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: var(---body-bng);
+    
+  } */
+  
+   .container-resultviews .sections #_student_id{
+    
+    /* background-color:var(--base-clr); */
+    height: 40px;
+    width: 200px;
+    position: absolute;
+    left: 300px;
+    top: 150px;
+    border-radius: 10px;
+    font-size: medium;
+    /* color: white; */
+    text-align: center;
+
+   }
+   .container-resultviews .sections #_semester_id{
+    text-align: center;
+    font-size: medium;
+    height: 40px;
+    width: 200px;
+    position: absolute;
+    left: 600px;
+    top: 150px;
+    border-radius: 10px;
+    background-color : var(--base-clr);
+    height: 50px;
+    width: 200px;
+    transition: border-color 0.3s ease;
+    color: white;
+    font-size: x-large;
+
+   }
+   .container-resultviews .sections #repotbtn{
+    font-size: x-large;
+    background-color : var(--base-clr);
+    height: 50px;
+    width: 200px;
+    position: absolute;
+    left: 68rem;
+    top: 150px;
+    border-radius: 15px;
+    
+    
+    
+   }
+
+
+
+
+
+   .container-resultviews   .select::after {
+  content: '▼'; 
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;  
+}
+
+.container-resultviews  .select:focus {
+  outline: none;  
+  border-color: #0056b3; 
+  box-shadow: 0 0 5px rgba(0, 86, 179, 0.5); 
+}
+
+.container-resultviews  .select option {
+  padding: 10px; 
+  background-color: white; 
+  color: #333;  
+  border-bottom: 1px solid #ddd;  
+}
+
+.container-resultviews  .select option:hover {
+  background-color: #e6f7ff;  
+  color: #0056b3;  
+}
+
+
+
+
+
+
+.printbtn{
+  position: relative;
+  margin-left: 45px;
+  margin-top: 35.5rem;
+  gap: 4rem;
+   position: fixed;
+   position: relative;
+   margin-left: 50px;
+ }
+
+ .printbtn button{
+   position: relative;
+   width: 105px;
+   height: 40px;
+   background-color: #20e619;
+   border: none;
+   color: white;
+   border-radius: 5px;
+   font-size: large;
+   
+
+ }
+ .printbtn button span{
+   position: absolute;
+   padding: 10px 5px;
+ 
+
+ }
+ .printbtn span{
+   position: absolute;
+   left: 4px;
+   top: -2px;
+   
+
+ }
+
+ .printbtn .Expectbtn{
+     background-color: #279ee2;
+     /* text-overflow: ellipsis; */
+     /* justify-content: center; */
+        
+ }
