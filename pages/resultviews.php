@@ -171,6 +171,16 @@ if (mysqli_num_rows($sql) > 0) {
        
                </tbody>
          </table>
+             
+            <div class="result_total">
+               <h2>Total: 
+               
+               </h2>
+                <h2>Precentage: </h2>
+                <h2>Grade: </h2>
+                <h2>Positions: </h2>
+            </div>
+
          <div class="printbtn">
 
 

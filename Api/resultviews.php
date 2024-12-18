@@ -1,10 +1,9 @@
 <?php
 
-
+session_start();
 header("Content-Type: application/json"); 
 
 include "../config/conn.php";
-
 
 
 function report_result($conn){
@@ -148,70 +147,70 @@ function result_fetch($conn){
 
 
 
-function register_result($conn){
 
-    extract($_POST);
+
+
+
+
+
+
+
+
+function Total($conn) {
     $data = array();
-    $query = "INSERT INTO `exam_results`( `student_id`, `midterm`, `coursework`, `final`, `reexam`,  `subject_id`)
-     VALUES ('$student_id','$midterm','$coursework','$final','$reexam','$subject_id')";
-    $result = $conn->query($query);
-    if($result){
 
-            $data = array("status" => true, "data" => "create_resulte Succesfuuly");
-    
-    }else{
+    // Retrieve input data from POST request
+    $_student_id = $_POST['_student_id'];
+    $_semester_id = $_POST['_semester_id'];
+
+    // Query for Total Marks
+    $queryTotal = "SELECT SUM(er_r.total_marks) AS Total  
+                   FROM exam_results er_r 
+                   LEFT JOIN semester_subject sub ON er_r.subject_id = sub.subject_id
+                   LEFT JOIN students s ON s.student_id = er_r.student_id
+                   WHERE s.student_id = '$_student_id' AND sub.semester_id = '$_semester_id'";
+
+    // Query for Percentage
+    $queryPercentage = "SELECT SUM(ex_r.total_marks)/COUNT(ex_r.subject_id) AS percentage 
+                        FROM exam_results ex_r  
+                        LEFT JOIN semester_subject sub ON ex_r.subject_id = sub.subject_id 
+                        LEFT JOIN students s ON s.student_id = ex_r.student_id 
+                        WHERE s.student_id = '$_student_id' AND sub.semester_id = '$_semester_id'";
+
+    $resultTotal = $conn->query($queryTotal);
+    $resultPercentage = $conn->query($queryPercentage);
+
+    if ($resultTotal && $resultPercentage) {
+        $rowTotal = $resultTotal->fetch_assoc();
+        $rowPercentage = $resultPercentage->fetch_assoc();
+
+        $totalMarks = $rowTotal['Total'] ?? 0;
+        $percentage = round($rowPercentage['percentage'] ?? 0, 2);
+
+       
+        $grade = "F";
+        if ($percentage >= 90) $grade = "A+";
+        elseif ($percentage >= 80) $grade = "A";
+        elseif ($percentage >= 70) $grade = "B";
+        elseif ($percentage >= 60) $grade = "C";
+        elseif ($percentage >= 50) $grade = "D";
+
+        // Response Data
+        $data = array(
+            "status" => true,
+            "data" => [
+                "Total" => $totalMarks,
+                "Percentage" => $percentage,
+                "Grade" => $grade
+            ]
+        );
+    } else {
         $data = array("status" => false, "data" => $conn->error);
     }
 
+    // Return JSON Response
     echo json_encode($data);
-
 }
-
-
-function Update_result($conn){
-
-    extract($_POST);
-
-    $data = array();
- 
-    $query = " UPDATE `exam_results` SET `student_id`='$student_id',
-    `midterm`='$midterm',`coursework`='$coursework',`final`='$final',`reexam`='$reexam',`subject_id`='$subject_id'  WHERE result_id = '$result_id'";
-  
-
-    $result = $conn->query($query);
-
-   
-    if($result){
-            $data = array("status" => true, "data" => "Updated Successfully😍😍😍😍");
-    }else{
-        $data = array("status" => false, "data" => $conn->error);
-    }
-
-    echo json_encode($data);
-
-}
-
-
-
-
-
-function delete_results($conn){
-  
-    extract($_POST);
-
- 
-   $query = " DELETE FROM exam_results  where result_id  = '$result_id'";
-   $reselt = $conn->query($query);
-   if($reselt){
-    echo json_encode(["status"=>"success", "message"=>"success delete"]);
-   }else{
-    echo json_decode(["status"=>"error","message"=>$conn->error()]);
-   }
-
-}
-
-
-
 
 
 if(isset($_POST['action'])){
@@ -225,6 +224,9 @@ if(isset($_POST['action'])){
         case 'register_result':
             register_result($conn);
             break;
+            case 'Total':
+                Total($conn);
+                break;
                 case 'report_result':
                     report_result($conn);
                     break;
