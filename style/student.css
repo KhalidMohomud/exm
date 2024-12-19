@@ -1,65 +1,203 @@
 
 
-.form-container {
-    padding: 20px; 
-    width: 100%;
-    max-width: 900px;
+
+
+#class_h2{
     position: absolute;
     left: 300px;
-    top:10rem;
+   
+    color: var(--base-clr);
+    font-weight: bold;
+    top: 140px;
+    font-size: xx-large;
+
+}
+ 
+.Addbtn-class {
+
+    position: absolute;
+      color: rgb(250, 247, 247);
+      left: 75rem;
+      height: 3rem;
+      width: 5rem;
+      top: 140px;
+      border: none;
+      background-color: var(--base-clr);
+      box-shadow: 2px 2px;
+      border-radius: 10px 60px;
+      font-weight: bold;
+      font-size:10px;
+      cursor: pointer;
+      
+  }
   
+  table {
+    position: absolute;
+      width: 75%;
+      left: 17.4rem;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+      background-color: white;
+      border: 1px solid #3a1111;
+      text-align: center;
+      border-radius: 10px;
+      top: 220px;
+  }
+  th, td {
+      padding: 10px;
+      border-bottom: 1px solid #f7d2d2;
+      
+  }
+  
+  th {
+      background-color:var(--base-clr);
+      color: white;
+      font-size: large;
+  }
+  td{
+    color: var(--base-clr);
+    background-color: white;
+    font-weight: bolder;
+  }
+  
+  .modal-class {
+   
+   
+    padding: 20px;
+    position: absolute;
+    top: 80px;
+    border: 1px solid #888;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    border-radius: 50px 10px 20px;
+    left: 30rem;
+    position: fixed;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    width: 550px;
 
-}
-form h2 {
-    margin-bottom: 20px;
+   }
+   
+   .modal-class {
+    display: none;
+  }
+  
+  /* .show-Links-modal{
+    display: block;
+  } */
+  .modal-class h2 {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 18px;
     color: black;
-
 }
 
-
-.form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
+.form-group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
 }
 
 .form-group label {
+    font-size: 10px;
+    margin-bottom: 4px;
     display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: #084c55;
+    font-size: 15px;
+    color: black;
 }
 
-.form-group input{
+.form-group .input-field {
+    width: 48%;
+    font-size:10px ;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 15px;
+
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #6a11cb;
+    box-shadow: 0 0 4px rgba(106, 17, 203, 0.5);
+    font-size: 15px;
+}
+
+.gender-group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.gender-group label {
+    font-size: 10px;
+}
+.showimg{
+    position: relative;
+  
+
+}
+.showimg img{
+
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 1px solid rgb(33, 33, 39);
+}
+.submit-btn {
     width: 100%;
     padding: 8px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    height: 30px;
-}
-
-.form-group select {
-    width: 103%;
-    padding: 10px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-}
-
-button {
-    width: 30%;
-    height: 50px;   
-    padding: 10px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #084c55;
     border: none;
-    border-radius: 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    background: var(--base-clr);
+    color: #fff;
     cursor: pointer;
-    margin-top: 20px;
+    font-size: large;
+}
+.submit-btn:hover {
+    opacity: 0.9;
 }
 
-button:hover {
-    background-color: #0056b3;
+.close-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: transparent;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    color: #333;
 }
+
+.close-btn:hover {
+    color: red;
+}
+  
+
+.close{
+    color: black;
+    float: right;
+    font-size: 30px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: red;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+   
+ 
+  
+   
