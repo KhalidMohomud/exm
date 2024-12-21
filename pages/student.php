@@ -56,7 +56,18 @@ include ("header.php");
 </div>
 </div>
 
-
+<div class="modal_information">
+<span class="close" id="Xbtn">&times;</span>
+ <h1>student information</h1>
+    <h2>Student_name:</h2>
+    <h2>Email:</h2>
+    <h2>contact_number:</h2>
+    <h2>Gender:</h2>
+    <h2>Department_name:</h2>
+    <h2>class_name:</h2>
+    <h2>Date:</h2>
+     <img src="" alt="" id="image" name="image">
+   </div>
 
        
 <div class="modal-class" id="modal-class">
@@ -96,8 +107,8 @@ include ("header.php");
             <label for="gender">Gender</label>
             <select id="Gender" name="Gender" require>
                 <option value="" disabled selected> gender</option>
-                <option value="1">male</option>
-                <option value="2">Female</option>
+                <option value="">male</option>
+                <option value="">Female</option>
                
             </select>
                 </div>
@@ -137,8 +148,8 @@ include ("header.php");
             <div class="form-group">
                 
                 <div class="input-field">
-                    <label for="image">Profile Image</label>
-                    <input type="file" id="fileimg"  name="fileimg" require>
+                    <label for="image"> Image</label>
+                    <input type="file" id="image"  name="image" require>
                 </div>
                 <div class="showimg">
                         <img  id="show"  require>
@@ -147,6 +158,9 @@ include ("header.php");
           
             <button type="submit" class="submit-btn">Register</button>
         </form>
+
+
+      
   
 
 </div>

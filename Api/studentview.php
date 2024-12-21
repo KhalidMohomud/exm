@@ -314,91 +314,92 @@ function students_Delete($conn) {
     echo json_encode($store_addy);
 }
 
-
 function update_student($conn) {
     extract($_POST);
     $data = array();
-
     $error_array = array();
 
-   
     if (!empty($_FILES['image']['tmp_name'])) {
+        error_log("Image is being uploaded...");
         $file_name = $_FILES['image']['name'];
         $file_type = $_FILES['image']['type'];
         $file_size = $_FILES['image']['size'];
 
         $allowedImages = ["image/jpg", "image/jpeg", "image/png", "image/avif"];
-        $max_size = 15 * 1024 * 1024;  // 15 mb waaye
-
+        $max_size = 15 * 1024 * 1024; // 15 MB
         $unique_name = uniqid() . ".png"; 
         $upload_path = "../Upload/" . $unique_name;
 
+        error_log("File Name: $file_name, File Type: $file_type, File Size: $file_size");
+
         if (in_array($file_type, $allowedImages)) {
             if ($file_size > $max_size) {
-                $error_array[] = $file_size / 1024 / 1024 . " MB file size must be less than " . $max_size / 1024 / 1024 . " MB.";
+                $error_array[] = "File size must be less than 15 MB.";
             }
         } else {
-            $error_array[] = "This file type is not allowed: " . $file_type;
+            $error_array[] = "Invalid file type: $file_type";
         }
 
         if (count($error_array) <= 0) {
-            
             $fetch_query = "SELECT image FROM `students` WHERE student_id = '$student_id'";
             $fetch_result = $conn->query($fetch_query);
 
             if ($fetch_result && $fetch_result->num_rows > 0) {
                 $row = $fetch_result->fetch_assoc();
-                $current_image = $row['image'];
-
-              
-                if (file_exists($current_image)) {
-                    unlink($current_image);
+                $current_image_path = "../Upload/" . basename($row['image']);
+                if (file_exists($current_image_path)) {
+                    unlink($current_image_path);
                 }
             }
 
-         
-            $query = "UPDATE `students` 
-                      SET `first_name` = '$first_name', 
-                          `last_name` = '$last_name', 
-                          `Gender` = '$Gender', 
-                          `email` = '$email', 
-                          `contact_number` = '$contact_number', 
-                          `department_id` = '$department_id', 
-                          `class_id` = '$class_id', 
-                          `date_of_birth` = '$date_of_birth', 
-                          `image` = '$upload_path' 
+            $query = "UPDATE `students` SET 
+                        `first_name` = '$first_name',
+                        `last_name` = '$last_name',
+                        `Gender` = '$Gender',
+                        `email` = '$email',
+                        `contact_number` = '$contact_number',
+                        `department_id` = '$department_id',
+                        `class_id` = '$class_id',
+                        `date_of_birth` = '$date_of_birth',
+                        `image` = '$upload_path'
                       WHERE `student_id` = '$student_id'";
+            error_log("Executing query: $query");
 
             $result = $conn->query($query);
-
             if ($result) {
-                move_uploaded_file($_FILES['image']['tmp_name'], $upload_path);
-                $data = array("status" => true, "data" => "Successfully updated with new image");
+                if (move_uploaded_file($_FILES['image']['tmp_name'], $upload_path)) {
+                    $data = array("status" => true, "data" => "Successfully updated with new image");
+                } else {
+                    error_log("Failed to move uploaded file.");
+                    $data = array("status" => false, "data" => "Failed to move uploaded file.");
+                }
             } else {
+                error_log("Database update failed: " . $conn->error);
                 $data = array("status" => false, "data" => $conn->error);
             }
         } else {
+            error_log("Validation errors: " . implode(", ", $error_array));
             $data = array("status" => false, "data" => $error_array);
         }
-    } 
-    
-    else {
-        $query = "UPDATE `students` 
-                  SET `first_name` = '$first_name', 
-                      `last_name` = '$last_name', 
-                      `Gender` = '$Gender', 
-                      `email` = '$email', 
-                      `contact_number` = '$contact_number', 
-                      `department_id` = '$department_id', 
-                      `class_id` = '$class_id', 
-                      `date_of_birth` = '$date_of_birth' 
+    } else {
+        error_log("No image uploaded.");
+        $query = "UPDATE `students` SET 
+                    `first_name` = '$first_name',
+                    `last_name` = '$last_name',
+                    `Gender` = '$Gender',
+                    `email` = '$email',
+                    `contact_number` = '$contact_number',
+                    `department_id` = '$department_id',
+                    `class_id` = '$class_id',
+                    `date_of_birth` = '$date_of_birth'
                   WHERE `student_id` = '$student_id'";
+        error_log("Executing query: $query");
 
         $result = $conn->query($query);
-
         if ($result) {
             $data = array("status" => true, "data" => "Successfully updated without changing the image");
         } else {
+            error_log("Database update failed: " . $conn->error);
             $data = array("status" => false, "data" => $conn->error);
         }
     }
@@ -413,40 +414,39 @@ function update_student($conn) {
 if(isset($_POST['action'])){
     $action = $_POST['action'];
     
-  
-//  $action($conn); 
-    switch ($action) {
-             case 'student_table':
-                student_table($conn);
-                break;
-               case 'student_from':
-                student_from($conn);
-                break;
-             case 'students_Delete':
-                students_Delete($conn);
-                break;
-                case 'update_student':
-                    update_student($conn);
-                    break;    
-           case 'Register_student':
-           Register_student($conn);
-           break;
-        case 'student_name':
-            student_name($conn);
-            break;
+   $action($conn); 
+    // switch ($action) {
+    //          case 'student_table':
+    //             student_table($conn);
+    //             break;
+    //            case 'student_from':
+    //             student_from($conn);
+    //             break;
+    //          case 'students_Delete':
+    //             students_Delete($conn);
+    //             break;
+    //             case 'update_student':
+    //                 update_student($conn);
+    //                 break;    
+    //        case 'Register_student':
+    //        Register_student($conn);
+    //        break;
+    //     case 'student_name':
+    //         student_name($conn);
+    //         break;
 
-            case 'semester_name':
-                semester_name($conn);
-                break;
+    //         case 'semester_name':
+    //             semester_name($conn);
+    //             break;
 
-        case 'subject_name':
-            subject_name($conn);
-            break;
+    //     case 'subject_name':
+    //         subject_name($conn);
+    //         break;
        
-        default:
-            echo json_encode(["status" => "error", "message" => "Unknown action"]);
-            break;
-    }
+    //     default:
+    //         echo json_encode(["status" => "error", "message" => "Unknown action"]);
+    //         break;
+   // }
   
    
 }else{

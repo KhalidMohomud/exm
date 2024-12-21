@@ -93,6 +93,52 @@
     color: black;
 }
 
+
+.modal_information{
+    width: 600px;
+    height: 300px;
+    background: linear-gradient(to right, #c6f3f7, #ffffff);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    left: 30rem;
+    position: fixed;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    position: relative;
+    margin-top: -33rem;
+    display: block;
+
+
+    
+}
+.modal_information{
+    display: block;
+}
+.modal_information h1{
+ color: black;
+ font-family: Arial, Helvetica, sans-serif;
+ font-size: 30px;
+ font-weight: bold;
+ position: relative;
+ margin-left: 170px;
+
+}
+.modal_information h2{
+    padding: 7px;
+    color: #3a1111;
+    font-size: 20px;
+}
+.modal_information img{
+    position: absolute;
+    float: right;
+    right: 2px;
+    top: 80px;
+    width: 150px;
+    height: 150px;
+    border: 1px solid rebeccapurple;
+}
+
 .form-group {
     display: flex;
     justify-content: space-between;
