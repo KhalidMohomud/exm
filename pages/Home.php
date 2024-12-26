@@ -1,4 +1,6 @@
 
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -103,6 +105,7 @@
   </style>
 </head>
 <body>
+  
 
 <?php
 
@@ -138,7 +141,8 @@ include ("header.php");
     </div>
     <div class="text-section">
       <p>Total Students</p>
-      <h2>3</h2>
+      <h2><?php echo $total_students; ?></h2>
+       
     </div>
   </div>
 
@@ -195,7 +199,38 @@ include ("header.php");
       </div>
                -->
 
+               <!-- <?php
+
+#include "../config/conn.php";
+#$totalStudents = getStudentCount($conn);
+
+
+
+
+?> -->
+
+
+
+
+
+
       <?php
+
+include "../config/conn.php";
+
+$sql = "SELECT COUNT(student_id) AS total_students FROM students";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+  
+    $row = $result->fetch_assoc();
+    $total_students = $row['total_students'];
+} else {
+    $total_students = 0;
+}
+
+$conn->close();
+  
 
 
 

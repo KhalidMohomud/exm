@@ -10,6 +10,7 @@
     font-weight: bold;
     top: 140px;
     font-size: xx-large;
+ 
 
 }
  
@@ -110,10 +111,11 @@
     display: block;
 
 
+
     
 }
 .modal_information{
-    display: block;
+    display: none;
 }
 .modal_information h1{
  color: black;

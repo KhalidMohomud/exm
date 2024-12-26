@@ -188,9 +188,9 @@ if (mysqli_num_rows($sql) > 0) {
 <button class="pribtn" id="pribtn"> <span class="material-symbols-outlined">
     print </span>Print</button>
  
-<!-- <button class="Expectbtn" id="export_statement"><span class="material-symbols-outlined">
+<button class="Expectbtn" id="export_statement"><span class="material-symbols-outlined">
     oven_gen
-    </span>Expect</button>     -->
+    </span>Expect</button>    
 
 
 

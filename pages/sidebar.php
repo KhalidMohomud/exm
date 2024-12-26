@@ -33,12 +33,12 @@ session_start();
 
 
 
-          <li class="active">
+      <!-- <li class="active">
         <a href="Home.php">
           <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M520-640v-160q0-17 11.5-28.5T560-840h240q17 0 28.5 11.5T840-800v160q0 17-11.5 28.5T800-600H560q-17 0-28.5-11.5T520-640ZM120-480v-320q0-17 11.5-28.5T160-840h240q17 0 28.5 11.5T440-800v320q0 17-11.5 28.5T400-440H160q-17 0-28.5-11.5T120-480Zm400 320v-320q0-17 11.5-28.5T560-520h240q17 0 28.5 11.5T840-480v320q0 17-11.5 28.5T800-120H560q-17 0-28.5-11.5T520-160Zm-400 0v-160q0-17 11.5-28.5T160-360h240q17 0 28.5 11.5T440-320v160q0 17-11.5 28.5T400-120H160q-17 0-28.5-11.5T120-160Zm80-360h160v-240H200v240Zm400 320h160v-240H600v240Zm0-480h160v-80H600v80ZM200-200h160v-80H200v80Zm160-320Zm240-160Zm0 240ZM360-280Z"/></svg>
           <span>Dashboard</span>
         </a>
-      </li>
+       </li> -->
       <li>
 
 
@@ -51,8 +51,8 @@ session_start();
             <ul class="sub-menu">
               <div>
                 <li><a href="student.php">Students</a></li>
-                <li><a href="studentdate.php">views Students</a></li>
-             
+                <!-- <li><a href="studentdate.php">views Students</a></li> -->
+                   
                 
               </div>
             </ul>
@@ -189,7 +189,7 @@ session_start();
           </li>
 
         
-          <!-- <li>
+          <li>
             <button onclick=toggleSubMenu(this) class="dropdown-btn">
               <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M680-280q25 0 42.5-17.5T740-340q0-25-17.5-42.5T680-400q-25 0-42.5 17.5T620-340q0 25 17.5 42.5T680-280Zm0 120q31 0 57-14.5t42-38.5q-22-13-47-20t-52-7q-27 0-52 7t-47 20q16 24 42 38.5t57 14.5ZM480-80q-139-35-229.5-159.5T160-516v-244l320-120 320 120v227q-19-8-39-14.5t-41-9.5v-147l-240-90-240 90v188q0 47 12.5 94t35 89.5Q310-290 342-254t71 60q11 32 29 61t41 52q-1 0-1.5.5t-1.5.5Zm200 0q-83 0-141.5-58.5T480-280q0-83 58.5-141.5T680-480q83 0 141.5 58.5T880-280q0 83-58.5 141.5T680-80ZM480-494Z"/></svg>
               <span>User Authentication</span>
@@ -198,14 +198,14 @@ session_start();
             <ul class="sub-menu">
               <div>
                 <li><a href="User.php">User</a></li>
-                <li><a href="categroy.php">Category</a></li>
-                <li><a href="Link.php">LINKS</a></li>
+                <!-- <li><a href="categroy.php">Category</a></li> -->
+                <!-- <li><a href="Link.php">LINKS</a></li>
                 <li><a href="system_actions.php">system_actions</a></li>
-                <li><a href="UserAutho.php">UserAuthorize</a></li>
+                <li><a href="UserAutho.php">UserAuthorize</a></li> -->
                 
               </div>
             </ul>
-          </li> -->
+          </li>
 
                
           <?php 

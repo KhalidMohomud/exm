@@ -233,10 +233,11 @@ td{
    position: fixed;
    margin-left: 50px;
    display: block;
+   gap: 2rem;
 
  }
 
- .printbtn button{
+ .printbtn .pribtn{
    position: absolute;
    width: 105px;
    height: 40px;
@@ -248,7 +249,7 @@ td{
    
 
  }
- .printbtn button span{
+ .printbtn  span{
    position: absolute;
    padding: 10px 5px;
  
@@ -263,8 +264,24 @@ td{
  }
 
  .printbtn .Expectbtn{
-     background-color: #279ee2;
-     /* text-overflow: ellipsis; */
-     /* justify-content: center; */
-        
+  position: absolute;
+  width: 105px;
+  height: 40px;
+  background-color: #279ee2;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  font-size: large;
+   margin-left: 150px;
+
  }
+
+ /* .printbtn .Expectbtn{
+     background-color: #279ee2;
+     text-overflow: ellipsis;
+      justify-content: center;
+      position: absolute;
+   width: 105px;
+   height: 40px;
+        
+ } */

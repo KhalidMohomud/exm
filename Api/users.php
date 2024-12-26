@@ -271,7 +271,7 @@ function readforms($conn){
      $result = $conn->query($query);
 
     if($result){       
-        unlink('../Upload/'.$user_name.".png");      
+        unlink('../Upload/'.$save_name.".png");      
         
         $store_addy = array("status"=>true , "data" => $store_addy);
 

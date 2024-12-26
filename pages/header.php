@@ -1,3 +1,12 @@
+ <?php
+  #session_start();
+
+
+
+
+
+?> 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,7 +39,7 @@
 <div class="modal-profile">
 
    <div class="profile">
-  <!-- <img src=" <?php echo "../Upload/". $_SESSION['image'];?> " alt=""> -->
+   <img src=" <?php echo "./Upload/". $_SESSION['image'];?> " alt="">
 
   <h3><?php echo $_SESSION['user_name']; ?></h3>
    <div class="logouot">

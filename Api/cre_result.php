@@ -12,7 +12,7 @@ function result_read($conn){
     $data = array();
     $array_data = array();
     $query = " SELECT ex.result_id, s.first_name, sub.subject_name, midterm ,coursework ,final,reexam, ex.total_marks, ex.grade FROM `exam_results` ex LEFT JOIN students s ON ex.student_id = s.student_id
-LEFT JOIN subjects sub ON ex.subject_id = sub.subject_id   WHERE ex.result_id is not null  and LOWER(s.first_name) = LOWER('$first_name')
+LEFT JOIN subjects sub ON ex.subject_id = sub.subject_id   WHERE ex.result_id is not null  and s.first_name = LOWER('$first_name')
 ORDER BY s.first_name ASC ";
     $result = $conn->query($query);
 
