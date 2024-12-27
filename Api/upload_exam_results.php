@@ -9,6 +9,7 @@ if (isset($_POST['save_excel_data'])) {
     $fileName = $_FILES['import_file']['name'];
     $file_ext = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
     $allowed_ext = ['xls', 'csv', 'xlsx','ods'];
+    // $allowed_ext = ['Only Supported formats: Excel files'];
     $_SESSION['message'] = ""; // Initialize message
 
     if (in_array($file_ext, $allowed_ext)) {

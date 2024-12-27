@@ -21,9 +21,9 @@
         max-width: 1000px;
         width: 90%;
         background: #fff;
-        padding: 30px;
+        padding: 40px;
         border-radius: 15px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
     }
 
     h1 {
@@ -43,7 +43,7 @@
         margin-bottom: 30px; 
         border-radius: 10px;
         font-size: 16px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+       
         position: relative;
     }
 

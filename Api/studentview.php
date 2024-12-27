@@ -1,9 +1,9 @@
+
 <?php
+// session_start();
 header("Content-Type: application/json"); 
 
 include "../Config/conn.php";
-
-
 
 
 
@@ -203,6 +203,7 @@ if (!function_exists('Register_student')) {
 
 
 function student_table($conn){
+    session_start();
 
     $data = array();
     $array_data = array();
@@ -228,7 +229,7 @@ function student_table($conn){
 
 
 function student_from($conn){
-  
+   
     $data = array();
     $messagDate = array();
      extract($_POST);
@@ -414,39 +415,39 @@ function update_student($conn) {
 if(isset($_POST['action'])){
     $action = $_POST['action'];
     
-   $action($conn); 
-    // switch ($action) {
-    //          case 'student_table':
-    //             student_table($conn);
-    //             break;
-    //            case 'student_from':
-    //             student_from($conn);
-    //             break;
-    //          case 'students_Delete':
-    //             students_Delete($conn);
-    //             break;
-    //             case 'update_student':
-    //                 update_student($conn);
-    //                 break;    
-    //        case 'Register_student':
-    //        Register_student($conn);
-    //        break;
-    //     case 'student_name':
-    //         student_name($conn);
-    //         break;
+//    $action($conn); 
+    switch ($action) {
+             case 'student_table':
+                student_table($conn);
+                break;
+               case 'student_from':
+                student_from($conn);
+                break;
+             case 'students_Delete':
+                students_Delete($conn);
+                break;
+                case 'update_student':
+                    update_student($conn);
+                break;    
+           case 'Register_student':
+           Register_student($conn);
+           break;
+        case 'student_name':
+            student_name($conn);
+            break;
 
-    //         case 'semester_name':
-    //             semester_name($conn);
-    //             break;
+            case 'semester_name':
+                semester_name($conn);
+                break;
 
-    //     case 'subject_name':
-    //         subject_name($conn);
-    //         break;
+        case 'subject_name':
+            subject_name($conn);
+            break;
        
-    //     default:
-    //         echo json_encode(["status" => "error", "message" => "Unknown action"]);
-    //         break;
-   // }
+        default:
+            echo json_encode(["status" => "error", "message" => "Unknown action"]);
+            break;
+   }
   
    
 }else{

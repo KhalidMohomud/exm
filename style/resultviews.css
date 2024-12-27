@@ -285,3 +285,48 @@ td{
    height: 40px;
         
  } */
+
+ @media (max-width: 768px) {
+  #student_Table,
+  #resultviews_Table {
+    position: static;
+    width: 90%;
+    margin: 0 auto 20px auto;
+    top: auto;
+  }
+
+  #student_Table th, #student_Table td,
+  #resultviews_Table th, #resultviews_Table td {
+    padding: 5px;
+    font-size: smaller;
+  }
+
+  .result_total {
+    position: static;
+    margin: 20px auto;
+    width: 90%;
+    top: auto;
+  }
+
+  .container-resultviews .sections #_student_id,
+  .container-resultviews .sections #_semester_id,
+  .container-resultviews .sections #repotbtn {
+    position: static;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .printbtn {
+    position: static;
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .printbtn .pribtn,
+  .printbtn .Expectbtn {
+    width: 100px;
+    font-size: medium;
+  }
+}

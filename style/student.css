@@ -15,7 +15,7 @@
 }
  
 .Addbtn-class {
-
+   
     position: absolute;
       color: rgb(250, 247, 247);
       left: 75rem;
@@ -56,7 +56,7 @@
       font-size: large;
   }
   td{
-    color: var(--base-clr);
+    color: rgb(48, 46, 46);
     background-color: white;
     font-weight: bolder;
   }
@@ -96,8 +96,9 @@
 
 
 .modal_information{
-    width: 600px;
-    height: 300px;
+    /* display: flex; */
+    width: 700px;
+    height: 400px;
     background: linear-gradient(to right, #c6f3f7, #ffffff);
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -244,6 +245,14 @@
     text-decoration: none;
     cursor: pointer;
   }
+
+
+
+
+
+
+
+  
   
    
  

@@ -179,6 +179,7 @@ session_start();
             </button>
             <ul class="sub-menu">
               <div>
+              <li><a href="ff.php"> Exam_result_Upload</a></li>
                 <li><a href="student_result.php">Exam_result</a></li>
                 <li><a href="resultviews.php"> resultviews</a></li>
                 
