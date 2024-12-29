@@ -13,6 +13,7 @@ function semester_subject_read($conn){
     $array_data = array();
     $query = "SELECT 
     s_sub.subject_semester_id, 
+    c.class_name,
     s.semester_name, 
     su.subject_name 
 FROM 
@@ -21,6 +22,7 @@ RIGHT JOIN
     semester s ON s.semester_id = s_sub.semester_id
 RIGHT JOIN  
     subjects su ON s_sub.subject_id = su.subject_id
+RIGHT JOIN class c ON c.class_id= s_sub.class_id    
 WHERE 
     s_sub.subject_semester_id IS NOT NULL
     ORDER BY 
@@ -78,7 +80,7 @@ function register_semester_subject($conn){
     extract($_POST);
     $data = array();
 
-    $query = "INSERT INTO `semester_subject` ( `semester_id`, `subject_id`) VALUES ( '$semester_id', '$subject_id')";
+    $query = "INSERT INTO `semester_subject` ( `class_id`, `semester_id`, `subject_id`) VALUES ( '$class_id','$semester_id', '$subject_id')";
     $result = $conn->query($query);
     if($result){
 
@@ -96,7 +98,7 @@ function register_semester_subject($conn){
 function Update_semester_subject($conn){
     extract($_POST);
     $data = array();
-    $query = "UPDATE semester_subject SET  semester_id = '$semester_id' ,subject_id = '$subject_id' where  subject_semester_id = '$subject_semester_id'";
+    $query = "UPDATE semester_subject SET class_id = '$class_id',  semester_id = '$semester_id' ,subject_id = '$subject_id' where  subject_semester_id = '$subject_semester_id'";
   
 
     $result = $conn->query($query);

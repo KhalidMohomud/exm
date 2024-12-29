@@ -1,4 +1,4 @@
-<?php
+<?php 
 session_start();
 include ('../config/conn.php');
 require '../vendor/autoload.php'; // PhpSpreadsheet library
@@ -8,9 +8,17 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
 if (isset($_POST['save_excel_data'])) {
     $fileName = $_FILES['import_file']['name'];
     $file_ext = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
-    $allowed_ext = ['xls', 'csv', 'xlsx','ods'];
-    // $allowed_ext = ['Only Supported formats: Excel files'];
+    $allowed_ext = ['xls', 'csv', 'xlsx', 'ods'];
     $_SESSION['message'] = ""; // Initialize message
+
+    // Check if a subject is selected
+    if (isset($_POST['subject_id']) && !empty($_POST['subject_id'])) {
+        $selectedSubject = $_POST['subject_id'];
+    } else {
+        $_SESSION['message'] = "Please select a subject before uploading the file.";
+        header('Location: ../pages/ff.php');
+        exit(0);
+    }
 
     if (in_array($file_ext, $allowed_ext)) {
         $inputFileNamePath = $_FILES['import_file']['tmp_name'];
@@ -30,7 +38,7 @@ if (isset($_POST['save_excel_data'])) {
                 // Check if table exists
                 $result = $conn->query("SHOW TABLES LIKE '$tableName'");
                 if ($result->num_rows == 0) {
-                    $_SESSION['message'] = "Table '$tableName' does not exist in the database.";
+                    $_SESSION['message'] = "Table '$tableName' does not  exist in the database.";
                     header('Location: ../pages/ff.php');
                     exit(0);
                 }
@@ -72,7 +80,17 @@ if (isset($_POST['save_excel_data'])) {
 
                     // Skip empty rows
                     if (empty(array_filter($row))) {
-                        conntinue;
+                        continue;
+                    }
+                    
+
+                    // Check if the row's subject matches the selected subject
+                    $subjectColumnIndex = array_search('subject', $columns); // Assuming 'subject' is a column in the data
+                    if ($subjectColumnIndex !== false) {
+                        if (strtolower($row[$subjectColumnIndex]) !== strtolower($selectedSubject)) {
+                            $errorCount++;
+                            continue; // Skip this row if it doesn't match the selected subject
+                        }
                     }
 
                     // Translate foreign key values dynamically
@@ -114,7 +132,7 @@ if (isset($_POST['save_excel_data'])) {
 
                 $_SESSION['message'] = "Successfully imported $successCount records into '$tableName'. Failed: $errorCount records.";
             } else {
-                $_SESSION['message'] = "The uploaded file is empty or conntains no valid data.";
+                $_SESSION['message'] = "The uploaded file is empty or contains no valid data.";
             }
         } catch (Exception $e) {
             $_SESSION['message'] = "Error occurred while processing the file: " . $e->getMessage();
@@ -126,4 +144,3 @@ if (isset($_POST['save_excel_data'])) {
     header('Location: ../pages/ff.php');
     exit(0);
 }
-?>

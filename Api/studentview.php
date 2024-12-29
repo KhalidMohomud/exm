@@ -141,7 +141,8 @@ function subject_name($conn){
     
     extract($_POST);
     $sql = " SELECT * FROM `semester_subject` s_sub LEFT JOIN  semester s  ON s_sub.semester_id = s.semester_id
- LEFT JOIN subjects  sub ON s_sub.subject_id = sub.subject_id  WHERE s_sub.semester_id = '$semester_id'";
+ LEFT JOIN subjects  sub ON s_sub.subject_id = sub.subject_id
+ LEFT JOIN class c ON c.class_id = s_sub.class_id    WHERE  c.class_id = '$class_id'  AND s_sub.semester_id = '$semester_id'  ";
 
     $result = mysqli_query($conn, $sql);
 
@@ -158,8 +159,71 @@ function subject_name($conn){
     }
 }
 
+
+// function subject_name($conn) {
+//     // Check if required POST variables are set
+//     if (!isset($_POST['semester_id']) || !isset($_POST['class_id'])) {
+//         echo json_encode(['status' => false, 'message' => 'Invalid input']);
+//         return;
+//     }
+
+//     // Sanitize inputs
+//     $semester_id = mysqli_real_escape_string($conn, $_POST['semester_id']);
+//     $class_id = mysqli_real_escape_string($conn, $_POST['class_id']);
+
+//     $sql = "
+//         SELECT sub.subject_id, sub.subject_name 
+//         FROM `semester_subject` s_sub
+//         LEFT JOIN semester s ON s_sub.semester_id = s.semester_id
+//         LEFT JOIN subjects sub ON s_sub.subject_id = sub.subject_id
+//         LEFT JOIN class c ON c.class_id = s_sub.class_id
+//         WHERE s_sub.semester_id = '$semester_id' AND c.class_id = '$class_id'
+//     ";
+
+//     $result = mysqli_query($conn, $sql);
+
+//     if ($result && mysqli_num_rows($result) > 0) {
+//         $subjects = [];
+//         while ($row = mysqli_fetch_assoc($result)) {
+//             $subjects[] = $row;
+//         }
+
+//         echo json_encode(['status' => true, 'data' => $subjects]);
+//     } else {
+//         echo json_encode(['status' => false, 'message' => 'No subjects found']);
+//     }
+// }
+function generateID($conn) {
+    $new_id = ''; 
+    $Date = array();
+
+    $query = "SELECT * FROM `students`   ORDER BY  students.student_code DESC LIMIT  1";
+    $result = $conn->query($query);
+
+    if ($result) {
+        if ($result->num_rows > 0) {
+            
+            $row = $result->fetch_assoc();
+            $new_id = ++$row['student_code']; 
+        } else {
+        
+            $new_id = 'HR0001';
+        }
+
+        $Date = array("status" => true, "data" => $new_id);
+    } else {
+        // Query failed
+        $Date = array("status" => false, "data" => $conn->error);
+    }
+
+    return $new_id;
+    // echo json_encode($Date);
+
+}
+
 if (!function_exists('Register_student')) {
     function Register_student($conn) {
+        $new_id = generateID($conn);
         extract($_POST);
         $data = array();
         $error_Array = array();
@@ -182,8 +246,8 @@ if (!function_exists('Register_student')) {
         }
 
         if (count($error_Array) <= 0) {
-            $query = "INSERT INTO `students`(`first_name`, `last_name`, `Gender`, `email`, `contact_number`, `department_id`, `class_id`, `date_of_birth`, `image`)
-                      VALUES ('$first_name','$last_name','$Gender','$email','$contact_number','$department_id','$class_id','$date_of_birth','$unique_name')";
+            $query = "INSERT INTO `students`(`student_code`,`first_name`, `last_name`, `Gender`, `email`, `contact_number`, `department_id`, `class_id`, `date_of_birth`, `image`)
+                      VALUES ( '$new_id', '$first_name','$last_name','$Gender','$email','$contact_number','$department_id','$class_id','$date_of_birth','$unique_name')";
 
             $result = $conn->query($query);
 
@@ -207,7 +271,8 @@ function student_table($conn){
 
     $data = array();
     $array_data = array();
-    $query = " SELECT `student_id`, `first_name`,  `Gender`, `email`, `contact_number` FROM `students`  ";
+    $query = " SELECT `student_id`, `first_name`,  `Gender`, `email`, d.department_name, c.class_name, `contact_number` FROM `students` s  JOIN departments d  ON s.department_id = d.department_id
+  LEFT JOIN class c ON  c.class_id  = s.class_id ";
     $result = $conn->query($query);
 
     if($result){
@@ -417,6 +482,9 @@ if(isset($_POST['action'])){
     
 //    $action($conn); 
     switch ($action) {
+            case 'generateID':
+                generateID($conn);
+                break;
              case 'student_table':
                 student_table($conn);
                 break;

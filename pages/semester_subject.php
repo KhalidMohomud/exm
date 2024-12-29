@@ -87,6 +87,7 @@ include ("header.php");
                <thead >
                   <tr>
                     <th>#</th>
+                     <th>class_name</th>
                       <th>  semester Name</th>
                       <th>  subject Name</th>
                       <th>Action</th>
@@ -116,11 +117,22 @@ include ("header.php");
                 <form  method="post" >
                 <input type="hidden" name="updateid" id="update_id">
 
-                
+                <label for="subject_id" class="form-label">class_name</label>
+                <select class="form-select" id="class_id" name="class_id" required>
+    <option value="" disabled selected>Select class</option>
+
+
+  
+
+
+  
+</select>
+
+
                 <label for="subject_id" class="form-label">subject_name</label>
 
 <select class="form-select" id="subject_id" name="subject_id" required>
-    <option value="" disabled selected>Select class</option>
+    <option value="" disabled selected>Select subject</option>
 
 
   

@@ -113,6 +113,9 @@
                         <th>Name</th>
                         <th>Gender</th>
                         <th>Email</th>
+                        
+                        <th> department_name</th>
+                        <th>class_name</th>
                         <th>Contact Number</th>
                         <th>Action</th>
                     </tr>
