@@ -1,61 +1,68 @@
 .table-container {
-  
-    padding: 20px; 
+    padding: 20px;
     width: 100%;
-    max-width: 900px;
-    position: absolute;
-    left: 300px;
-    top:10rem;
+    max-width: 1000px;
+    position: relative; 
+    margin: 0 auto; 
+    top: 10rem;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
 }
 
-  .table-container  h2 {
+.table-container h2 {
     color: black;
-    position: absolute;
     font-size: xx-large;
-    top: -80px;
-    left: 30rem;
+    margin-bottom: 20px;
+    text-align: center; 
 }
-#search{
+
+/* #search {
+    width: 80%; 
+    max-width: 400px;
     height: 40px;
-    width: 200px;
-    /* border: 1px solid black; */
-    position: absolute;
+    margin: 10px auto; 
+    border: 1px solid black;
     border-radius: 10px;
-    top: -40px;
     font-size: large;
     text-align: center;
-
-}
+} */
 
 table {
-    width: 100%;
+    width: 100%; 
+    max-width: 900px;
     border-collapse: collapse;
-    margin-bottom: 20px;
-    margin-bottom: 20px;
+    margin: 5px auto; /* Center the table */
     background-color: white;
     border: 1px solid #3a1111;
+    position: absolute;
+    top: 22px;
+    left: 1px;
 }
 
 th, td {
     padding: 10px;
     border-bottom: 1px solid #f7d2d2;
-    
+    text-align: left; /* Improve readability */
 }
 
 th {
-    background-color:var(--base-clr);
+    background-color: var(--base-clr);
     color: white;
     font-size: large;
 }
-td{
-  color: black;
-  background-color: white;
-  font-weight: bolder;
+
+td {
+    color: rgb(80, 76, 80);
+    background-color: white;
+    font-weight: bolder;
 }
+
 .pagination {
     display: flex;
-    justify-content: space-between;
-    gap: 10rem;
+    justify-content: center; /* Center pagination buttons */
+    gap: 1rem; /* Reduce spacing for smaller screens */
+    flex-wrap: wrap; /* Allow wrapping for narrow screens */
 }
 
 .pagination button {
@@ -67,20 +74,7 @@ td{
     color: #fff;
     cursor: pointer;
     transition: background-color 0.3s;
-    
 }
-
- button #prev{
-    position: absolute;
-    right: 10px;
-
-}
-
- button #next{
-    position: absolute;
-     left: 0;
-}
-
 
 .pagination button:disabled {
     background-color: #ccc;
@@ -89,4 +83,48 @@ td{
 
 .pagination button:hover:not(:disabled) {
     background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .table-container {
+        top: 5rem; /* Adjust top padding for smaller screens */
+    }
+
+    .table-container h2 {
+        font-size: large; /* Reduce heading size */
+    }
+
+    #search {
+        width: 90%; /* Make the search field responsive */
+    }
+
+    table {
+        width: 100%; /* Ensure table fits smaller screens */
+    }
+
+    .pagination {
+        flex-direction: column; /* Stack buttons vertically */
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .table-container {
+        padding: 10px;
+    }
+
+    .table-container h2 {
+        font-size: medium; /* Further reduce heading size */
+    }
+
+    th, td {
+        font-size: smaller; /* Reduce table font size */
+        padding: 5px; /* Reduce padding */
+    }
+
+    .pagination button {
+        padding: 8px 10px; /* Reduce button size */
+        font-size: 14px;
+    }
 }

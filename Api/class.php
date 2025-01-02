@@ -11,7 +11,7 @@ function class_read($conn){
 
     $data = array();
     $array_data = array();
-    $query = "SELECT * FROM `class` ";
+    $query = " SELECT c.class_id, c.class_name , d.department_name, c.date  FROM `class` c LEFT JOIN  departments d ON c.department_id = d.department_id ORDER BY c.class_id,   c.class_name , d.department_name, c.date   ASC ";
     $result = $conn->query($query);
 
     if($result){
@@ -61,7 +61,7 @@ function register_class($conn){
 
     extract($_POST);
     $data = array();
-    $query = "INSERT INTO `class`( class_name ,course_id) VALUES ('$class_name','$course_id')";
+    $query = "INSERT INTO `class`( class_name ,department_id) VALUES ('$class_name','$department_id')";
     $result = $conn->query($query);
     if($result){
 
@@ -83,7 +83,7 @@ function Update_class($conn){
 
     $data = array();
  
-    $query = "UPDATE class SET class_name ='$class_name' , course_id = '$course_id'  WHERE class_id = '$class_id'";
+    $query = "UPDATE class SET class_name ='$class_name' , department_id = '$department_id'  WHERE class_id = '$class_id'";
   
 
     $result = $conn->query($query);

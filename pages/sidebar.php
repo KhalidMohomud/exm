@@ -51,7 +51,7 @@ session_start();
             <ul class="sub-menu">
               <div>
                 <li><a href="student.php">Students</a></li>
-                <!-- <li><a href="studentdate.php">views Students</a></li> -->
+                <li><a href="studentdate.php">views Students</a></li>
                    
                 
               </div>

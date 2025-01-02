@@ -88,17 +88,16 @@
     <?php include("header.php"); ?>
 
     <div class="container-classs">
-        <!-- Search Bar Section -->
+      
         <div class="search-container">
             <form action="#" method="GET" class="search-form">
                 <input type="text" name="search" class="search-input" placeholder="Search for students..." id="search-bar">
-                <!-- <button type="submit" class="search-button"> -->
+              
                     <i class="fa fa-search"></i>
                 </button>
             </form>
         </div>
 
-        <!-- Add New Student Button -->
         <button class="Addbtn-class" id="openModalBtn">
             <span class="material-symbols-outlined">
                 add
@@ -121,13 +120,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Table content will go here -->
+                   
                 </tbody>
             </table>
         </div>
     </div>
 
-    <!-- Modal for Student Information -->
+ 
     <div class="modal_information">
         
         <span class="close" id="Xbtn">&times;</span>
@@ -152,7 +151,7 @@
      
     </div>
    
-    <!-- Modal for Student Registration -->
+
     <div class="modal-class" id="modal-class">
         <span class="close" id="Xbtn2">&times;</span>
         <h2>Student Registration</h2>

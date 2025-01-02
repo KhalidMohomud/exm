@@ -293,6 +293,34 @@ function student_table($conn){
 
 
 
+function student_table_date($conn){
+    session_start();
+
+    $data = array();
+    $array_data = array();
+    $query = " SELECT s.student_code, s.first_name ,s.last_name , s.Gender, s.email, s.contact_number,
+ d.department_name, c.class_name, s.date_of_birth , s.image  FROM `students` s  JOIN departments d  ON s.department_id = d.department_id
+  LEFT JOIN class c ON  c.class_id  = s.class_id   ORDER by s.student_code ASC ";
+    $result = $conn->query($query);
+
+    if($result){
+
+        while($row = $result->fetch_assoc()){
+            $array_data [] = $row;
+        }
+
+        $data = array("status" => true, "data" => $array_data);
+
+    }else{
+
+        $data = array("status" => false, "data" => $conn->error);
+    }
+
+    echo json_encode($data);
+}
+
+
+
 function student_from($conn){
    
     $data = array();
@@ -482,6 +510,9 @@ if(isset($_POST['action'])){
     
 //    $action($conn); 
     switch ($action) {
+          case 'student_table_date':
+            student_table_date($conn);
+            break;
             case 'generateID':
                 generateID($conn);
                 break;

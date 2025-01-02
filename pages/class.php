@@ -87,7 +87,7 @@ include ("header.php");
                   <tr>
                     <th>#</th>
                       <th>class Name</th>      
-                      <th>department id</th>
+                      <th>department Name</th>
                       <th>Date</th>
                       <th>Action</th>
                   </tr>
@@ -119,7 +119,7 @@ include ("header.php");
                  <input type="text" class="form-control" id="class_name" name="class_name"  >
                  <label for="department_id" class="form-label">department_name</label>
 
-           <select class="form-select" id="course_id" name="course_id" required >
+           <select class="form-select" id="department_id" name="department_id" required >
                 <option value="" disabled selected>Select Department</option>
   
                     </select>

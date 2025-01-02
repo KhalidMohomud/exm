@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 session_start();
 header("Content-Type: application/json"); 
@@ -159,18 +159,18 @@ function result_fetch($conn){
 function Total($conn) {
     $data = array();
 
-    // Retrieve input data from POST request
+   
     $_student_id = $_POST['_student_id'];
     $_semester_id = $_POST['_semester_id'];
 
-    // Query for Total Marks
+   
     $queryTotal = "SELECT SUM(er_r.total_marks) AS Total  
                    FROM exam_results er_r 
                    LEFT JOIN semester_subject sub ON er_r.subject_id = sub.subject_id
                    LEFT JOIN students s ON s.student_id = er_r.student_id
                    WHERE s.student_id = '$_student_id' AND sub.semester_id = '$_semester_id'";
 
-    // Query for Percentage
+   
     $queryPercentage = "SELECT SUM(ex_r.total_marks)/COUNT(ex_r.subject_id) AS percentage 
                         FROM exam_results ex_r  
                         LEFT JOIN semester_subject sub ON ex_r.subject_id = sub.subject_id 
@@ -195,7 +195,7 @@ function Total($conn) {
         elseif ($percentage >= 60) $grade = "C";
         elseif ($percentage >= 50) $grade = "D";
 
-        // Response Data
+      
         $data = array(
             "status" => true,
             "data" => [
