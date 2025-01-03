@@ -34,6 +34,34 @@ ORDER BY s.first_name ASC ";
 
 
 
+function subject_read_r($conn){
+    extract($_POST);
+      $data = array();
+      $array_data = array();
+      $query = " SELECT ex.result_id, s.first_name, sub.subject_name, midterm ,coursework ,final,reexam, ex.total_marks, ex.grade FROM `exam_results` ex LEFT JOIN students s ON ex.student_id = s.student_id
+      LEFT JOIN subjects sub ON ex.subject_id = sub.subject_id   WHERE ex.result_id is not null    and sub.subject_name = '$subject_name'    AND s.class_id =  '$class_id' 
+      ORDER BY s.first_name ASC ";
+      $result = $conn->query($query);
+  
+      if($result){
+  
+          while($row = $result->fetch_assoc()){
+              $array_data [] = $row;
+          }
+  
+          $data = array("status" => true, "data" => $array_data);
+  
+      }else{
+  
+          $data = array("status" => false, "data" => $conn->error);
+      }
+  
+      echo json_encode($data);
+  }
+  
+  
+
+
 function result_fetch($conn){
 
     extract($_POST);
@@ -133,7 +161,9 @@ if(isset($_POST['action'])){
   
          switch ($action) {
 
-
+         case 'subject_read_r':
+            subject_read_r($conn);
+            break;
         case 'register_result':
             register_result($conn);
             break;
