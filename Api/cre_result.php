@@ -60,15 +60,15 @@ function subject_read_r($conn){
   }
   
   
-
+ 
 
 function result_fetch($conn){
 
     extract($_POST);
     $data = array();
     $array_data = array();
-    $query = " SELECT* FROM `exam_results` ex LEFT JOIN students s ON ex.student_id = s.student_id
-         LEFT JOIN subjects sub ON ex.subject_id = sub.subject_id  where ex.result_id = '$result_id'";
+    $query = " SELECT ex.result_id,s.first_name ,sub.subject_name, ex.midterm, ex.coursework,ex.final,ex.reexam   FROM `exam_results` ex LEFT JOIN students s ON ex.student_id = s.student_id
+ LEFT JOIN subjects sub ON ex.subject_id = sub.subject_id  where ex.result_id  = '$result_id'";
     $result = $conn->query($query);
 
     if($result){
@@ -114,8 +114,14 @@ function Update_result($conn){
 
     $data = array();
  
-    $query = " UPDATE `exam_results` SET `student_id`='$student_id',
-    `midterm`='$midterm',`coursework`='$coursework',`final`='$final',`reexam`='$reexam',`subject_id`='$subject_id'  WHERE result_id = '$result_id'";
+    $query = " UPDATE `exam_results`
+        SET 
+            midterm = '$midterm',
+            coursework = '$coursework',
+            final = '$final',
+            reexam = '$reexam'
+        WHERE 
+            result_id = '$result_id' ";
   
 
     $result = $conn->query($query);
@@ -151,7 +157,26 @@ function delete_results($conn){
 }
 
 
+if (isset($_GET['search'])) {
+    extract($_GET);
+    // $searchQuery = $_GET['search'];
+    $sql = "SELECT * FROM exam_results er  LEFT  JOIN  students s ON er.student_id = s.student_id
+LEFT JOIN subjects sb ON er.subject_id = sb.subject_id
+WHERE s.first_name LIKE '%$first_name%' or  sb.subject_name  LIKE
+     '%$subject_name%'   ";
+    $result = $conn->query($sql);
 
+    $students = array();
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $students[] = $row;
+        }
+    }
+
+  
+    echo json_encode($students);
+    exit;
+}
 
 
 if(isset($_POST['action'])){

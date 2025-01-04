@@ -9,6 +9,133 @@
     <link rel="stylesheet" href="../style/result_subject.css">
     <style>
     /* General Styles */
+
+.modal-subject_res {
+   padding: 20px;
+   position: absolute;
+   top: 220px;
+   border: 1px solid #888;
+   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+   border-radius: 50px 10px 20px;
+   left: 30rem;
+   position: fixed;
+   background-color: #fff;
+   border-radius: 10px;
+   padding: 15px;
+   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+   width: 650px;
+
+  }
+  
+  .modal-subject_res  {
+   display: none;
+ }
+ 
+
+ .modal-subject_res h2 {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: black;
+}
+.close-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: transparent;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    color: #333;
+}
+
+.close-btn:hover {
+    color: red;
+}
+  
+
+    
+
+.modal-subject_res  .form-group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+ .modal-subject_res  .form-group label {
+    font-size: 10px;
+    margin-bottom: 4px;
+    display: block;
+    font-size: 15px;
+    color: black;
+}
+
+  .modal-subject_res  .form-group .input-field {
+    width: 48%;
+    font-size:10px ;
+}
+
+ .modal-subject_res  .form-group input,
+.form-group select {
+    width: 100%;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 15px;
+
+}
+
+.modal-subject_res    .form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #6a11cb;
+    box-shadow: 0 0 4px rgba(106, 17, 203, 0.5);
+    font-size: 15px;
+}
+
+ .modal-subject_res  .gender-group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.gender-group label {
+    font-size: 10px;
+}
+
+ .modal-subject_res  .submit-btn {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    background: var(--base-clr);
+    color: #fff;
+    cursor: pointer;
+    font-size: large;
+}
+.submit-btn:hover {
+    opacity: 0.9;
+}
+
+.close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: transparent;
+    border: none;
+    font-size: 32px;
+    cursor: pointer;
+    color: #333;
+}
+.close:hover,
+  .close:focus {
+    color: red;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
     .main-container {
         font-family: Arial, sans-serif;
         margin: 0;
@@ -41,38 +168,6 @@
         color: #333;
         text-align: center;
     }
-
-   .alert-container{
-     position: absolute;
-     top: 70px;
-     
-   }
-    .alert {
-        padding: 15px;
-        margin-bottom: 30px; 
-        border-radius: 10px;
-        font-size: 16px;
-       
-        position: relative;
-    }
-
-    .alert h5 {
-        font-size: 18px;
-        margin-bottom: 5px;
-        font-weight: bold;
-    }
-
-    .alert .btn-close {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        border: none;
-        background: transparent;
-        font-size: 20px;
-        cursor: pointer;
-    }
-
-   
     /* Row Styles */
     .row {
         display: flex;
@@ -222,7 +317,11 @@
                     <i class="fa fa-search"></i>
                 </button>
             </form>
+
+            
         </div>
+
+ 
 <div class="container-reslte_subject">
 
     
@@ -253,6 +352,87 @@
        </tbody>
  </table>
 </div>
+
+
+
+<div class="modal-subject_res" id="modal-subject_res ">
+        <span class="close" id="Xbtn2">&times;</span>
+        <h2>Student Registration</h2>
+
+        <form id="subject_result_from">
+        <input type="hidden" id="update_id">
+        <div class="form-group">
+                <div class="input-field">
+                    <label for="Student_name">Student_name</label>
+                    <!-- <select id="student_id" name="student_id"  require>
+                        
+                      
+                    </select> -->
+                    <input type="text" id="student_id" name="student_id" >
+                </div>
+                <div class="input-field">
+                    <label for="subject_name">subject_name</label>
+                    <!-- <select name="subject_id" id="subject_id" require>
+                       
+                    </select> -->
+                    <input type="text" id="subject_name" name="subject_name" >
+                </div>
+            </div>
+         
+            <div class="form-group">
+                <div class="input-field">
+                    
+                    <label for="Midterm">Midterm  Marks</label>
+                    <input type="number" id="midterm" name="midterm" value="0" required>
+                </div>
+                <div class="input-field">
+                   
+                    <label for="coursework">Coursework Marks</label>
+                    <input type="number" id="coursework" name="coursework" value="0"  required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-field">
+                 
+                    <label for="final">Final Marks</label>
+                    <input type="number" id="final" name="final" value="0"  required>
+                </div>
+                <div class="input-field">
+                <label for="reexam">Reexam Marks</label>
+                <input type="number" id="reexam" name="reexam" value="0" min="0" max="70">
+                </div>
+            </div>
+
+            
+
+            <!-- <div class="form-group">
+                <div class="input-field">
+                    <label for="class">Class</label>
+                    <select id="class_id" name="class_id" require>
+                        <option value="" disabled selected>Select your class</option>
+                    </select>
+                </div>
+                <div class="input-field">
+                    <label for="date-of-birth">Date of Birth</label>
+                    <input type="date" id="date_of_birth" name="date_of_birth" require>
+                </div>
+            </div> -->
+
+            <!-- <div class="form-group">
+                <div class="input-field">
+                    <label for="image">Image</label>
+                    <input type="file" id="image" name="image" require>
+                </div>
+                <div class="showimg">
+                    <img id="show" require>
+                </div>
+            </div> -->
+
+            <button type="submit" class="submit-btn">Update</button>
+        </form>
+    </div>
+
 </div>
 
     

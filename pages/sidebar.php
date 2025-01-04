@@ -182,7 +182,8 @@
               <li><a href="ff.php"> Exam_result_Upload</a></li>
                 <li><a href="student_result.php">Exam_result</a></li>
                 <li><a href="resultviews.php"> resultviews</a></li>
-                
+                <li><a href="subject_result.php">subject_results</a></li>
+              
             
                 
               </div>
