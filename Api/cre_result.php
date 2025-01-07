@@ -157,13 +157,12 @@ function delete_results($conn){
 }
 
 
-if (isset($_GET['search'])) {
-    extract($_GET);
+if (isset($_POST['search'])) {
+    extract($_POST);
     // $searchQuery = $_GET['search'];
     $sql = "SELECT * FROM exam_results er  LEFT  JOIN  students s ON er.student_id = s.student_id
 LEFT JOIN subjects sb ON er.subject_id = sb.subject_id
-WHERE s.first_name LIKE '%$first_name%' or  sb.subject_name  LIKE
-     '%$subject_name%'   ";
+WHERE s.student_id LIKE '%$first_name%'   ";
     $result = $conn->query($sql);
 
     $students = array();
@@ -177,6 +176,41 @@ WHERE s.first_name LIKE '%$first_name%' or  sb.subject_name  LIKE
     echo json_encode($students);
     exit;
 }
+
+
+
+// function search_results($conn) {
+//     if (isset($_GET['search'])) {
+//         extract($_GET);
+
+//         // Initialize variables to avoid undefined variable errors
+//         $first_name = isset($_GET['first_name']) ? $_GET['first_name'] : '';
+//         $subject_name = isset($_GET['subject_name']) ? $_GET['subject_name'] : '';
+
+//         // Prepare SQL query
+//         $sql = "SELECT * FROM exam_results er
+//                 LEFT JOIN students s ON er.student_id = s.student_id
+//                 LEFT JOIN subjects sb ON er.subject_id = sb.subject_id
+//                 WHERE s.first_name LIKE '%$first_name%'
+//                 OR sb.subject_name LIKE '%$subject_name%'";
+
+//         $result = $conn->query($sql);
+
+//         $students = array();
+//         if ($result->num_rows > 0) {
+//             while ($row = $result->fetch_assoc()) {
+//                 $students[] = $row;
+//             }
+//         }
+
+//         echo json_encode($students);
+//         exit;
+//     } else {
+//         echo json_encode(["status" => "error", "message" => "search parameter is missing"]);
+//         exit;
+//     }
+// }
+
 
 
 if(isset($_POST['action'])){

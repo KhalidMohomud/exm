@@ -1,3 +1,9 @@
+<?php
+ session_start();
+ 
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,10 +24,11 @@
     }
 
     .login-container {
-        background:#ddd;
+        background:#ffff;
         border-radius: 15px;
         padding: 30px;
-        width: 90%;
+        width: 50%;
+        height: 400px;
         max-width: 400px;
         text-align: center;
         border: 1px solid rgb(111, 111, 151);
@@ -40,6 +47,23 @@
         margin-bottom: 20px;
     }
 
+   .logo{
+    display: flex;
+    position: relative;
+    margin-left: 100px;
+    gap: 1em;
+   }
+    .logo h2{
+  color: rgb(75, 75, 233);
+  font-weight: bold;
+  font-size: 30px;
+  margin-top: 10px;
+}
+img {
+  width: 60px;
+  height: 60px;
+ }
+   
     .alert {
         display: none;
         padding: 10px;
@@ -93,7 +117,7 @@
     .login-container button {
         width: 100%;
         padding: 12px;
-        background: linear-gradient(135deg,#60e275, #127880);
+        background:#2575fc;
         color: #fff;
         border: none;
         border-radius: 8px;
@@ -125,7 +149,7 @@
         color: #6a11cb;
     }
 
-    /* Responsive Styling */
+
     @media (max-width: 768px) {
         .login-container {
             padding: 20px;
@@ -144,21 +168,25 @@
 </head>
 <body>
     <div class="login-container">
+        <div class="logo">
+            <img src="../Image/logo.png" alt="">
+             <h2>HER<span>SI</span></h2>
+          </div>
         <h2>Login</h2>
         <div id="alertBox" class="alert"></div>
-        <form onsubmit="handleLogin(event)" id="login_from">
-            <label for="">Username</label>
-            <input type="text" id="username" name="username" placeholder="Username" required>
+        <form   method="POST"  id="login_from"  >
+            <label for="">student code</label>
+            <input type="text" id="student_code" name="student_code" placeholder="studentcode" required>
             <label for="">password</label>
             <input type="password" id="password" name="password" placeholder="Password" required>
-            <button type="submit">Login</button>
+            <button type="submit" name ="submit" id="submit">Login</button>
             <div class="forgot-password">
-                <!-- <a href="#">Forgot Password?</a> -->
+                <a href="#">Forgot Password?</a>
             </div>
         </form>
     </div>
 
- 
+    
 </body>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" 
 integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>

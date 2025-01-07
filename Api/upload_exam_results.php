@@ -12,13 +12,13 @@ if (isset($_POST['save_excel_data'])) {
     $_SESSION['message'] = ""; // Initialize message
 
     // Check if a subject is selected
-    if (isset($_POST['subject_id']) && !empty($_POST['subject_id'])) {
-        $selectedSubject = $_POST['subject_id'];
-    } else {
-        $_SESSION['message'] = "Please select a subject before uploading the file.";
-        header('Location: ../pages/ff.php');
-        exit(0);
-    }
+    // if (isset($_POST['subject_id']) && !empty($_POST['subject_id'])) {
+    //     $selectedSubject = $_POST['subject_id'];
+    // } else {
+    //     $_SESSION['message'] = "Please select a subject before uploading the file.";
+    //     header('Location: ../pages/ff.php');
+    //     exit(0);
+    // }
 
     if (in_array($file_ext, $allowed_ext)) {
         $inputFileNamePath = $_FILES['import_file']['tmp_name'];

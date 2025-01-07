@@ -16,7 +16,7 @@
 .search-form {
     display: flex;
     align-items: center;
-    background-color: #fff;
+    background-color: var(--text-clr);
     border-radius: 55px;
     padding: 5px;
     border: 0.3px solid black;

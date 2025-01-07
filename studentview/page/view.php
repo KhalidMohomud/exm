@@ -1,3 +1,8 @@
+<?php
+  session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -95,6 +100,21 @@
             font-weight: bold;
         }
 
+        /* .......total section ka */
+         
+        .result_total{
+            position: relative;
+           margin-left: 200px;
+           margin-top:30px;
+           margin-bottom:20px ;
+           
+
+        }
+        .result_total h2{
+             font-family: Arial, Helvetica, sans-serif;
+             font-size: 20px;
+   }
+
         .footer {
             background: #f1f5f9;
             text-align: center;
@@ -123,16 +143,39 @@
     <div class="container">
         
         <div class="header">
-            Student View
+           Port Student 
         </div>
 
         <div class="semester-select">
-            <select>
-                <option value="">Select Semester</option>
-                <option value="1">Semester 1</option>
-                <option value="2">Semester 2</option>
+            <select id="semester_id" name="semester_id">
+            <option value="">Select Semester</option>
+                <?php
+                include('../config/conn.php');
+                
+                // $student_code = $_SESSION['student_code'];
+               
+                $sql = mysqli_query($conn, "SELECT s.semester_id ,s.semester_name
+                 FROM semester s   ");
+                
+                
+                if (mysqli_num_rows($sql) > 0) {
+                
+                    while ($row = mysqli_fetch_assoc($sql)) {
+                        echo "<option value='{$row['semester_id']}'>{$row['semester_name']} </option>";
+                        $semester_name  = $row['semester_name'];
+                      
+                        
+                        
+                    }
+                  
+                } else {
+                    echo "<option value=''>No students found</option>";
+                }
+                 ?> 
             </select>
         </div>
+
+        
 
        
         <table id="student">
@@ -145,15 +188,17 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>John Doe</td>
-                    <td>10</td>
-                    <td>Science</td>
+                <td><?php echo ($_SESSION['first_name']) ?></td>
+              <td><?php echo ($_SESSION['class_name'])  ?></td>
+               <td><?php echo ($_SESSION['department_name']) ?></td>
+
+                    
                 </tr>
             </tbody>
         </table>
 
        
-        <table id="subject">
+        <table id="subject_reslut_re">
             <thead>
                 <tr>
                     <th>Subject</th>
@@ -166,59 +211,15 @@
                 </tr>
             </thead>
             <tbody>
+                
                 <tr>
-                    <td>Mathamthis</td>
-                    <td>8588888</td>
-                    <td>90</td>
-                    <td>88</td>
-                    <td>--</td>
-                    <td>263</td>
-                    <td>A</td>
-                </tr>
-                <tr>
-                    <td>Math</td>
-                    <td>85</td>
-                    <td>90</td>
-                    <td>88</td>
-                    <td>--</td>
-                    <td>263</td>
-                    <td>A</td>
-                </tr>
-
-                <tr>
-                    <td>Math</td>
-                    <td>85</td>
-                    <td>90</td>
-                    <td>88</td>
-                    <td>--</td>
-                    <td>263</td>
-                    <td>A</td>
-                </tr>
-
-                <tr>
-                    <td>Math</td>
-                    <td>85</td>
-                    <td>90</td>
-                    <td>88</td>
-                    <td>--</td>
-                    <td>263</td>
-                    <td>A</td>
-                </tr>
-
-                <tr>
-                    <td>Math</td>
-                    <td>85</td>
-                    <td>90</td>
-                    <td>88</td>
-                    <td>--</td>
-                    <td>263</td>
-                    <td>A</td>
+                    
                 </tr>
             </tbody>
         </table>
 
       
-        <table class="summary-table">
+        <!-- <table class="select_total">
             <tbody>
                 <tr>
                     <td>Total Marks:</td>
@@ -233,12 +234,24 @@
                     <td>B+</td>
                 </tr>
             </tbody>
-        </table>
-
-        <!-- Footer -->
+        </table> -->
+        <div class="result_total">
+               <h2>Total: 
+               
+               </h2>
+                <h2>Precentage: </h2>
+                <h2>Grade: </h2>
+                <h2>Positions: </h2>
+            </div>
+  
         <div class="footer">
-            &copy; 2024 School Name
+            &copy; 2024  KHALID MOHOMUD HERSI
         </div>
     </div>
 </body>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" 
+integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script type="text/javascript" src="../node_modules/view.js" defer></script>
 </html>

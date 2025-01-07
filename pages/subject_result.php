@@ -1,3 +1,7 @@
+<?php
+
+ session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -310,7 +314,7 @@
         </form>
 
 
-        <div class="search-container">
+        <!-- <div class="search-container">
             <form action="#" method="GET" class="search-form">
                 <input type="text" name="search" class="search-input" placeholder="Search for students..." id="search-bar">
               
@@ -319,7 +323,7 @@
             </form>
 
             
-        </div>
+        </div> -->
 
  
 <div class="container-reslte_subject">
@@ -357,7 +361,7 @@
 
 <div class="modal-subject_res" id="modal-subject_res ">
         <span class="close" id="Xbtn2">&times;</span>
-        <h2>Student Registration</h2>
+        <h2>Exam Update</h2>
 
         <form id="subject_result_from">
         <input type="hidden" id="update_id">

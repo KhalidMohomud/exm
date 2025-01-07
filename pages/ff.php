@@ -1,3 +1,8 @@
+<?php
+
+ session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Import Subject</title>
     <style>
-    /* General Styles */
+
     .main-container {
         font-family: Arial, sans-serif;
         margin: 0;
@@ -252,13 +257,13 @@
                         <option value="" disabled selected>Select Semester</option>
                     </select>
                 </div>
-
+<!-- 
                 <div class="form-group">
                     <label for="subject_id">Subject Name</label>
                     <select class="form-select" id="subject_id" name="subject_id" required>
                         <option value="" disabled selected>Select Subject</option>
                     </select>
-                </div>
+                </div> -->
             </div>
 
             <!-- Row 2: File Upload and Submit -->
