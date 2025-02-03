@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 07, 2025 at 03:43 PM
+-- Generation Time: Feb 03, 2025 at 06:33 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -323,7 +323,8 @@ INSERT INTO `class` (`class_id`, `department_id`, `class_name`, `date`) VALUES
 (63, 2, 'BSE3', '2024-12-30 14:02:31'),
 (64, 1, 'BCS1', '2024-12-30 14:02:46'),
 (65, 1, 'BCS2', '2024-12-30 14:03:01'),
-(66, 43, 'DB1', '2024-12-31 13:24:43');
+(66, 43, 'DB1', '2024-12-31 13:24:43'),
+(67, 2, 'BSE5', '2025-01-28 19:50:40');
 
 -- --------------------------------------------------------
 
@@ -352,7 +353,9 @@ INSERT INTO `class_semester` (`class_semester_id`, `semester_id`, `class_id`) VA
 (55, 5, 61),
 (56, 6, 61),
 (57, 7, 61),
-(58, 8, 61);
+(58, 8, 61),
+(59, 26, 61),
+(60, 1, 67);
 
 -- --------------------------------------------------------
 
@@ -387,34 +390,7 @@ INSERT INTO `departments` (`department_id`, `department_name`, `date`) VALUES
 (1, 'Computer Science', '2024-11-29 13:34:33'),
 (2, 'Software Engineerings', '2024-12-11 15:50:06'),
 (3, 'IT', '2024-11-25 18:30:10'),
-(43, 'Data', '2024-12-31 13:24:21');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `exams`
---
-
-CREATE TABLE `exams` (
-  `exam_id` int(11) NOT NULL,
-  `exm_name` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `exam_attendance`
---
-
-CREATE TABLE `exam_attendance` (
-  `Attend_id` int(11) DEFAULT NULL,
-  `exam_id` int(11) NOT NULL,
-  `student_id` int(11) NOT NULL,
-  `subject_id` int(11) NOT NULL,
-  `class_id` int(11) NOT NULL,
-  `attendance_status` tinyint(1) DEFAULT 1,
-  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+(43, 'Date', '2025-01-28 19:27:48');
 
 -- --------------------------------------------------------
 
@@ -439,66 +415,27 @@ CREATE TABLE `exam_results` (
 --
 
 INSERT INTO `exam_results` (`result_id`, `student_id`, `midterm`, `coursework`, `final`, `reexam`, `subject_id`) VALUES
-(534, 29, 25, 10, 56, 0, 45),
-(535, 30, 30, 10, 59, 0, 45),
-(536, 31, 30, 10, 60, 0, 45),
-(537, 32, 25, 10, 56, 0, 45),
-(538, 33, 25, 10, 56, 0, 45),
-(539, 28, 29, 10, 56, 0, 47),
-(540, 29, 25, 10, 56, 0, 47),
-(541, 30, 25, 10, 56, 0, 47),
-(542, 31, 25, 10, 56, 0, 47),
-(543, 32, 25, 10, 56, 0, 47),
-(544, 33, 25, 10, 56, 0, 47),
-(545, 28, 25, 10, 56, 0, 50),
-(546, 29, 25, 10, 56, 0, 50),
-(547, 30, 25, 10, 56, 0, 50),
-(548, 31, 25, 10, 56, 0, 50),
-(549, 32, 25, 10, 56, 0, 50),
-(550, 33, 25, 10, 56, 0, 50),
-(551, 28, 29, 10, 56, 0, 8),
-(552, 29, 25, 10, 56, 0, 8),
-(553, 30, 25, 10, 56, 0, 8),
-(554, 31, 25, 10, 56, 0, 8),
-(555, 32, 25, 10, 56, 0, 8),
-(556, 33, 28, 10, 56, 0, 8),
-(557, 28, 28, 10, 56, 0, 11),
-(558, 29, 28, 10, 56, 0, 11),
-(559, 30, 28, 10, 56, 0, 11),
-(560, 31, 28, 10, 56, 0, 11),
-(561, 32, 28, 10, 56, 0, 11),
-(562, 33, 22, 10, 60, 0, 11),
-(563, 28, 22, 10, 60, 0, 57),
-(564, 29, 52, 10, 60, 0, 57),
-(565, 30, 22, 10, 60, 0, 57),
-(566, 31, 22, 10, 60, 0, 57),
-(567, 32, 52, 10, 60, 0, 57),
-(568, 33, 22, 10, 60, 0, 57),
-(569, 29, 22, 10, 60, 0, 56),
-(570, 28, 25, 10, 56, 0, 50),
-(571, 29, 25, 10, 56, 0, 50),
-(572, 30, 25, 10, 56, 0, 50),
-(573, 31, 25, 10, 56, 0, 50),
-(574, 32, 25, 10, 56, 0, 50),
-(575, 33, 25, 10, 56, 0, 50),
-(576, 28, 29, 10, 56, 0, 8),
-(577, 29, 25, 10, 56, 0, 8),
-(578, 30, 25, 10, 56, 0, 8),
-(579, 31, 25, 10, 56, 0, 8),
-(580, 32, 25, 10, 56, 0, 8),
-(581, 33, 28, 10, 56, 0, 8),
-(582, 28, 28, 10, 56, 0, 11),
-(583, 29, 28, 10, 56, 0, 11),
-(584, 30, 28, 10, 56, 0, 11),
-(585, 31, 28, 10, 56, 0, 11),
-(586, 32, 28, 10, 56, 0, 11),
-(587, 33, 52, 10, 60, 0, 11),
-(588, 28, 52, 10, 60, 0, 57),
-(589, 29, 52, 10, 60, 0, 57),
-(590, 30, 52, 10, 60, 0, 57),
-(591, 31, 52, 10, 60, 0, 57),
-(592, 32, 52, 10, 60, 0, 57),
-(593, 33, 52, 10, 60, 0, 57);
+(674, 28, 25, 10, 56, 0, 8),
+(675, 29, 25, 10, 56, 0, 8),
+(676, 30, 25, 10, 56, 0, 8),
+(677, 31, 25, 10, 56, 0, 8),
+(678, 32, 25, 10, 56, 0, 8),
+(679, 33, 25, 10, 56, 0, 8),
+(680, 37, 25, 10, 56, 0, 8),
+(681, 28, 25, 10, 56, 0, 45),
+(682, 29, 25, 10, 56, 0, 45),
+(683, 30, 25, 10, 56, 0, 45),
+(684, 31, 25, 10, 56, 0, 45),
+(685, 32, 25, 10, 56, 0, 45),
+(686, 33, 25, 10, 56, 0, 45),
+(687, 37, 25, 10, 56, 0, 45),
+(688, 28, 25, 10, 26, 0, 47),
+(689, 29, 25, 10, 56, 0, 47),
+(690, 30, 25, 10, 56, 0, 47),
+(691, 31, 25, 10, 56, 0, 47),
+(692, 32, 25, 10, 56, 0, 47),
+(693, 33, 25, 10, 56, 0, 47),
+(694, 37, 25, 10, 56, 0, 47);
 
 -- --------------------------------------------------------
 
@@ -582,7 +519,8 @@ INSERT INTO `semester` (`semester_id`, `semester_name`) VALUES
 (5, 'semester5'),
 (6, 'semester6'),
 (7, 'semester7'),
-(8, 'semester8');
+(8, 'semester8'),
+(26, 'semester 9');
 
 -- --------------------------------------------------------
 
@@ -629,7 +567,8 @@ INSERT INTO `semester_subject` (`subject_semester_id`, `subject_id`, `semester_i
 (59, 11, 2, 61),
 (60, 56, 2, 61),
 (61, 8, 2, 61),
-(62, 57, 2, 61);
+(62, 57, 2, 61),
+(63, 12, 1, 67);
 
 -- --------------------------------------------------------
 
@@ -658,14 +597,18 @@ CREATE TABLE `students` (
 
 INSERT INTO `students` (`student_id`, `student_code`, `first_name`, `last_name`, `Gender`, `email`, `contact_number`, `department_id`, `class_id`, `date_of_birth`, `image`, `password`) VALUES
 (28, 'HR0001', 'khalid', 'mohomud', 'Male', 'khm@gmail.com', '252619006007', 2, 61, '2014-06-20', '6772a898a7230.png', '123'),
-(29, 'HR0002', 'Abduwale', 'Ali', 'Male', 'abdu@example.com', '2526189309', 2, 61, '2024-12-04', '6772a8e87d712.png', '123'),
+(29, 'HR0002', 'Abiweli', 'Ali', 'Male', 'abdu@example.com', '2526189309', 2, 61, '2024-12-04', '6772a8e87d712.png', '123'),
 (30, 'HR0003', 'Abdifitaax', 'Ciise', 'Male', 'abd@example.com', '25289584', 2, 61, '2005-03-16', '6772a932cb159.png', '123'),
 (31, 'HR0004', 'Jaabir', 'm', 'Male', 'jaabir@gmail.com', '25278439', 2, 61, '2006-06-07', '6772aa086c06f.png', '123'),
-(32, 'HR0005', 'ayaan', 'abdi', 'Female', 'ayann@gmail.com', '7783', 1, 64, '2024-12-03', '6772aa4302890.png', '123'),
+(32, 'HR0005', 'ayaan xuseen', 'abdi', 'Female', 'ayann@gmail.com', '7783', 1, 64, '2024-12-03', '6772aa4302890.png', '123'),
 (33, 'HR0006', 'ayuub', 'abdi', 'Male', 'ayuub@gmail.com', '3275748943', 2, 61, '2024-12-26', '6772aa83cc4f7.png', '123'),
 (34, 'HR0007', 'xasan', 'ali', 'Male', 'a@gmail.com', '67393', 3, 56, '0000-00-00', '6773edec0d906.png', '123'),
 (35, 'HR0008', 'xuseen', 'xasan', 'Male', 'xasan@gmail.com', '2526189493', 2, 61, '2024-12-25', '6773f05484e86.png', '123'),
-(36, 'HR0009', 'abdisamad', 'a', 'Male', 'abdisa@gmail.com', '437829', 2, 61, '2025-01-24', '6779f243a5146.png', '123');
+(36, 'HR0009', 'abdisamad', 'a', 'Male', 'abdisa@gmail.com', '437829', 2, 61, '2025-01-24', '6779f243a5146.png', '123'),
+(37, 'HR0010', 'abdi', 'xasan', 'Male', 'd@gmail.com', '78457845', 2, 61, '2025-01-02', '6782acce1d2e5.png', '123'),
+(38, 'HR0011', 'abdi mohomes', 'xasan', 'Male', 'abdi3@gmail.com', '34245', 2, 61, '2017-02-01', '67992d8984242.png', '123'),
+(39, 'HR0012', 'xaliimo', 'abdi', 'Female', 'xaliimo@gmail.com', '6153984', 3, 56, '2025-06-05', '67992ff3a19b5.png', '123'),
+(40, 'HR0013', 'faarah', 'abdi', 'Male', 'far@gmail.com', '647839843', 2, 67, '2024-12-05', '679935c66f34d.png', '123');
 
 -- --------------------------------------------------------
 
@@ -748,7 +691,7 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `user_name` varchar(20) NOT NULL,
   `password` varchar(20) NOT NULL,
-  `Type` varchar(20) NOT NULL,
+  `Type` enum('Admin','user','exam') NOT NULL,
   `status` varchar(20) NOT NULL DEFAULT 'Active',
   `image` varchar(20) NOT NULL,
   `Date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
@@ -759,9 +702,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `user_name`, `password`, `Type`, `status`, `image`, `Date`) VALUES
-(50, 'ayuub', '123', '', 'Active', 'ayuub.png', '2024-11-15 15:30:21'),
-(0, 'khalid', '123', '', 'Active', 'khalid.png', '2024-12-22 15:31:56'),
-(0, 'Abdi', '123', '', 'Active', 'Abdi.png', '2024-12-22 15:33:51');
+(2, 'Abdi', '123', 'user', 'Active', 'Abdi.png', '2025-01-09 13:51:38'),
+(4, 'xuseen', '123', 'exam', 'Active', '', '2025-01-09 14:05:42'),
+(6, 'Qalid', '123', 'Admin', 'Active', 'Qalid.png', '2025-01-28 15:58:12'),
+(8, 'khalid', '12', 'user', 'Active', 'khalid.png', '2025-01-28 16:31:12');
 
 -- --------------------------------------------------------
 
@@ -803,21 +747,6 @@ ALTER TABLE `courses`
 --
 ALTER TABLE `departments`
   ADD PRIMARY KEY (`department_id`);
-
---
--- Indexes for table `exams`
---
-ALTER TABLE `exams`
-  ADD PRIMARY KEY (`exam_id`);
-
---
--- Indexes for table `exam_attendance`
---
-ALTER TABLE `exam_attendance`
-  ADD PRIMARY KEY (`exam_id`,`student_id`),
-  ADD KEY `student_id` (`student_id`),
-  ADD KEY `subject_id` (`subject_id`),
-  ADD KEY `class_id` (`class_id`);
 
 --
 -- Indexes for table `exam_results`
@@ -893,6 +822,12 @@ ALTER TABLE `subjects`
   ADD PRIMARY KEY (`subject_id`);
 
 --
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -900,13 +835,13 @@ ALTER TABLE `subjects`
 -- AUTO_INCREMENT for table `class`
 --
 ALTER TABLE `class`
-  MODIFY `class_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `class_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT for table `class_semester`
 --
 ALTER TABLE `class_semester`
-  MODIFY `class_semester_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `class_semester_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT for table `courses`
@@ -921,16 +856,10 @@ ALTER TABLE `departments`
   MODIFY `department_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
--- AUTO_INCREMENT for table `exams`
---
-ALTER TABLE `exams`
-  MODIFY `exam_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
-
---
 -- AUTO_INCREMENT for table `exam_results`
 --
 ALTER TABLE `exam_results`
-  MODIFY `result_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=594;
+  MODIFY `result_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=695;
 
 --
 -- AUTO_INCREMENT for table `faculties`
@@ -948,7 +877,7 @@ ALTER TABLE `foreign_key_mappings`
 -- AUTO_INCREMENT for table `semester`
 --
 ALTER TABLE `semester`
-  MODIFY `semester_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `semester_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `semester_student`
@@ -960,19 +889,25 @@ ALTER TABLE `semester_student`
 -- AUTO_INCREMENT for table `semester_subject`
 --
 ALTER TABLE `semester_subject`
-  MODIFY `subject_semester_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `subject_semester_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `subjects`
 --
 ALTER TABLE `subjects`
   MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables
@@ -996,15 +931,6 @@ ALTER TABLE `class_semester`
 --
 ALTER TABLE `courses`
   ADD CONSTRAINT `fr_d` FOREIGN KEY (`department_id`) REFERENCES `departments` (`department_id`);
-
---
--- Constraints for table `exam_attendance`
---
-ALTER TABLE `exam_attendance`
-  ADD CONSTRAINT `exam_attendance_ibfk_1` FOREIGN KEY (`exam_id`) REFERENCES `exams` (`exam_id`),
-  ADD CONSTRAINT `exam_attendance_ibfk_3` FOREIGN KEY (`subject_id`) REFERENCES `subjects` (`subject_id`),
-  ADD CONSTRAINT `exam_attendance_ibfk_4` FOREIGN KEY (`class_id`) REFERENCES `class` (`class_id`),
-  ADD CONSTRAINT `exam_attendance_ibfk_5` FOREIGN KEY (`class_id`) REFERENCES `class` (`class_id`);
 
 --
 -- Constraints for table `exam_results`

@@ -132,10 +132,10 @@ include ("header.php");
                     <label for="type">Type:</label>
                     <select id="Type" name=" Type" required>
                        
-                        <option value="">User_Registration</option>
-                        <option value="">User_Exam</option>
-                        <option value="">User_payment</option>
-                        <option value="">Super_Adim</option>
+                       
+                        <option value="user">user</option>
+                        <option value="Admin">Admin</option>
+                        
                         
                     </select>
                     <label > Image</label>

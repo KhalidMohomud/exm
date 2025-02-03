@@ -120,6 +120,7 @@ include ("header.php");
         <table id="student-table">
             <thead>
                 <tr>
+                     <th>Student_Id</th>
                     <th>student_code</th>
                     <th>first_name</th>
                     <th>last_name</th>

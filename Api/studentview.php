@@ -298,7 +298,7 @@ function student_table_date($conn){
 
     $data = array();
     $array_data = array();
-    $query = " SELECT s.student_code, s.first_name ,s.last_name , s.Gender, s.email, s.contact_number,
+    $query = " SELECT s.student_id, s.student_code, s.first_name ,s.last_name , s.Gender, s.email, s.contact_number,
  d.department_name, c.class_name, s.date_of_birth , s.image  FROM `students` s  JOIN departments d  ON s.department_id = d.department_id
   LEFT JOIN class c ON  c.class_id  = s.class_id   ORDER by s.student_code ASC ";
     $result = $conn->query($query);

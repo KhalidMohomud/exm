@@ -11,20 +11,11 @@ if (isset($_POST['save_excel_data'])) {
     $allowed_ext = ['xls', 'csv', 'xlsx', 'ods'];
     $_SESSION['message'] = ""; // Initialize message
 
-    // Check if a subject is selected
-    // if (isset($_POST['subject_id']) && !empty($_POST['subject_id'])) {
-    //     $selectedSubject = $_POST['subject_id'];
-    // } else {
-    //     $_SESSION['message'] = "Please select a subject before uploading the file.";
-    //     header('Location: ../pages/ff.php');
-    //     exit(0);
-    // }
-
     if (in_array($file_ext, $allowed_ext)) {
         $inputFileNamePath = $_FILES['import_file']['tmp_name'];
 
-        // Extract table name from the file name
-        $tableName = pathinfo($fileName, PATHINFO_FILENAME);
+        // Haddii aad rabto in table la doorto si toos ah, beddel halkan
+        $tableName = "exam_results"; // Haddii aad rabto inaad magaca file-ka ka qaadato, beddel
 
         try {
             // Load the Excel file
@@ -32,20 +23,19 @@ if (isset($_POST['save_excel_data'])) {
             $data = $spreadsheet->getActiveSheet()->toArray();
 
             if (count($data) > 1) {
-                // Extract column names from the first row
                 $columns = array_filter($data[0], fn($col) => !empty($col));
 
                 // Check if table exists
                 $result = $conn->query("SHOW TABLES LIKE '$tableName'");
                 if ($result->num_rows == 0) {
-                    $_SESSION['message'] = "Table '$tableName' does not  exist in the database.";
+                    $_SESSION['message'] = "Table '$tableName' does not exist in the database.";
                     header('Location: ../pages/ff.php');
                     exit(0);
                 }
 
-                // Fetch table schema and remove the primary key column
-                $primaryKeyColumn = null;
+                // Fetch table schema
                 $tableSchemaQuery = $conn->query("DESCRIBE `$tableName`");
+                $primaryKeyColumn = null;
                 while ($schemaRow = $tableSchemaQuery->fetch_assoc()) {
                     if ($schemaRow['Key'] === 'PRI') {
                         $primaryKeyColumn = $schemaRow['Field'];
@@ -66,7 +56,6 @@ if (isset($_POST['save_excel_data'])) {
                     ];
                 }
 
-                // Prepare dynamic columns and placeholders
                 $columnsString = implode(", ", array_map(fn($col) => "`" . $col . "`", $columns));
                 $placeholders = implode(", ", array_fill(0, count($columns), "?"));
 
@@ -76,24 +65,11 @@ if (isset($_POST['save_excel_data'])) {
                 $errorCount = 0;
 
                 for ($i = 1; $i < count($data); $i++) {
-                    $row = &$data[$i]; // Reference the row to modify directly
-
-                    // Skip empty rows
+                    $row = &$data[$i];
                     if (empty(array_filter($row))) {
                         continue;
                     }
                     
-
-                    // Check if the row's subject matches the selected subject
-                    $subjectColumnIndex = array_search('subject', $columns); // Assuming 'subject' is a column in the data
-                    if ($subjectColumnIndex !== false) {
-                        if (strtolower($row[$subjectColumnIndex]) !== strtolower($selectedSubject)) {
-                            $errorCount++;
-                            continue; // Skip this row if it doesn't match the selected subject
-                        }
-                    }
-
-                    // Translate foreign key values dynamically
                     foreach ($foreignKeys as $column => $fkDetails) {
                         $fkColumnIndex = array_search($column, $columns);
                         if ($fkColumnIndex !== false) {
@@ -102,24 +78,21 @@ if (isset($_POST['save_excel_data'])) {
                             $referenceColumn = $fkDetails['reference_column'];
 
                             if (!empty($value)) {
-                                // Search for the reference value in the referenced table
                                 $fkQuery = $conn->query("SELECT `$column` FROM `$referencedTable` WHERE LOWER(`$referenceColumn`) = LOWER('$value')");
                                 if ($fkQuery->num_rows > 0) {
                                     $fkRow = $fkQuery->fetch_assoc();
-                                    $row[$fkColumnIndex] = $fkRow[$column]; // Replace with foreign key ID
+                                    $row[$fkColumnIndex] = $fkRow[$column];
                                 } else {
                                     $errorCount++;
-                                    continue 2; // Skip this row
+                                    continue 2;
                                 }
                             }
                         }
                     }
 
-                    // Normalize the row length to match the number of columns
                     $row = array_slice($row, 0, count($columns));
-                    $row = array_pad($row, count($columns), null); // Add NULL for missing values
+                    $row = array_pad($row, count($columns), null);
 
-                    // Insert transformed data into target table
                     $stmt->bind_param(str_repeat("s", count($row)), ...$row);
                     if ($stmt->execute()) {
                         $successCount++;
@@ -129,7 +102,6 @@ if (isset($_POST['save_excel_data'])) {
                 }
 
                 $stmt->close();
-
                 $_SESSION['message'] = "Successfully imported $successCount records into '$tableName'. Failed: $errorCount records.";
             } else {
                 $_SESSION['message'] = "The uploaded file is empty or contains no valid data.";

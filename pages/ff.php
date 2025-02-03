@@ -257,13 +257,13 @@
                         <option value="" disabled selected>Select Semester</option>
                     </select>
                 </div>
-<!-- 
+
                 <div class="form-group">
                     <label for="subject_id">Subject Name</label>
                     <select class="form-select" id="subject_id" name="subject_id" required>
                         <option value="" disabled selected>Select Subject</option>
                     </select>
-                </div> -->
+                </div>
             </div>
 
             <!-- Row 2: File Upload and Submit -->

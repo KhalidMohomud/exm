@@ -1,0 +1,4 @@
+#just samey import MySQL ka database ka
+kadib waa uu shaqeynaa 
+waxaa laga yaabaa inaa error ku aragti mar ka
+import dhahadi
